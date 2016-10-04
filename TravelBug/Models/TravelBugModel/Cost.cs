@@ -13,8 +13,9 @@ namespace TravelBug.Models.TravelBugModel
 
         public int? ExcursionID { get; set; }
 
-        [Column("Cost")]
-        public int Cost1 { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string Money { get; set; }
 
         public virtual Excursion Excursion { get; set; }
     }

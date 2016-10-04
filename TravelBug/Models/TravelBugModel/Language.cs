@@ -15,7 +15,7 @@ namespace TravelBug.Models.TravelBugModel
 
         [Required]
         [StringLength(50)]
-        public string Title { get; set; }
+        public string Name_Language { get; set; }
 
         public virtual Excursion Excursion { get; set; }
     }

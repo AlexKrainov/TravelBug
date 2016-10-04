@@ -1,0 +1,119 @@
+﻿@model TravelBug.Models.TravelBugModel.Excursion
+
+@{
+    this.Layout = null;
+}
+
+@if (ViewBag.Type == "Language")
+{
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Language.First().Name_Language, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.Hidden("Name_Language", (string)ViewBag.HiddenLanguage)
+            @{
+    List<TravelBug.Models.TravelBugModel.Language> languages = ViewBag.Languages;
+
+    if (languages.Any(x => x.Name_Language.Contains("Russian")))
+    {
+        <img class="lang" style="opacity: 1;" src="~/images/Flag/russian_federation.png" alt="Russian" onclick="ChooseFlag(this);" />
+    }
+    else
+    {
+        <img class="lang" style="opacity: 0.4;" src="~/images/Flag/russian_federation.png" alt="Russian" onclick="ChooseFlag(this);" />
+    }
+
+    if (languages.Any(x => x.Name_Language.Contains("English")))
+    {
+        <img class="lang" style="opacity: 1;" src="~/images/Flag/united_kingdom_great_britain.png" alt="English" onclick="ChooseFlag(this);" />
+    }
+    else
+    {
+        <img class="lang" style="opacity: 0.4;" src="~/images/Flag/united_kingdom_great_britain.png" alt="English" onclick="ChooseFlag(this);" />
+    }
+
+    if (languages.Any(x => x.Name_Language.Contains("France")))
+    {
+        <img class="lang" style="opacity: 1;" src="~/images/Flag/france.png" alt="France" onclick="ChooseFlag(this);" />
+    }
+    else
+    {
+        <img class="lang" style="opacity: 0.4;" src="~/images/Flag/france.png" alt="France" onclick="ChooseFlag(this);" />
+    }
+}
+            @*@Html.DropDownList("Value1", new SelectList(ViewBag.Collection, "Name_Language", "Name_Language", ViewBag.Value),
+                  new { @class = "control-label col-md-2 ddl1", @onclick = "ClickDropDownList(this);" })
+
+                @Html.TextBox("Name_Language", (string)ViewBag.Value, new { @id = ViewBag.txtID, @class = "form-control ddl2" })*@
+        </div>
+    </div>
+}
+else if (ViewBag.Type == "Cost")
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cost.First().Money, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Value1", new SelectList(ViewBag.Collection, "Money", "Money", ViewBag.Value),
+              new { @class = "control-label col-md-2 ddl1", @onclick = "ClickDropDownList(this);" })
+
+            @Html.TextBox("Money", (string)ViewBag.Value, new { @id = ViewBag.txtID, @class = "form-control ddl2" })
+        </div>
+    </div>
+}
+else if (ViewBag.Type == "Time")
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.Time, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Value1", new SelectList(ViewBag.Collection, "Option", "Option", ViewBag.Value),
+                 new { @class = "control-label col-md-2 ddl1", @onclick = "ClickDropDownList(this);" })
+
+            @Html.TextBox("Time", (string)ViewBag.Value, new { @id = ViewBag.txtID, @class = "form-control ddl2" })
+        </div>
+    </div>
+}
+
+
+<script>
+    function ClickDropDownList(o) {
+        var textBox = o.nextElementSibling;
+        textBox.value = o.value;
+    }
+
+    function ChooseFlag(o)
+    {
+        if ($(o).attr("style") == "opacity: 1;")
+        {
+            $(o).attr("style", "opacity: 0.4;");
+        }else {
+            $(o).attr("style", "opacity: 1;");
+        }
+        var hiddenField = document.getElementById("Name_Language");
+        var languages = document.getElementsByClassName("lang");
+
+        hiddenField.value = "";
+
+        for (var i = 0; i < languages.length; i++) {
+            if ($(languages[i]).attr("style") == "opacity: 1;")
+            {
+                hiddenField.value += languages[i].alt + " ";
+            }
+        }
+
+    }
+
+</script>
+
+<style>
+    .ddl1 {
+        width: 177px;
+    }
+
+    .ddl2 {
+        width: 148px;
+    }
+
+    .lang {
+        cursor: pointer;
+    }
+</style>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using TravelBug.Models.TravelBugModel;
 
 namespace TravelBug.Controllers.Pages.ExcursionToServer
@@ -16,13 +17,15 @@ namespace TravelBug.Controllers.Pages.ExcursionToServer
             ViewBag.LanguageCollecion = manager.GetLanguage().ToList();
             ViewBag.ExcursionID = excursionID;
 
+            
             return View();
         }
 
         [HttpPost]
-        public ActionResult CreateLanguage(Language language)
+        public ActionResult CreateLanguage(Language language, Cost cost)
         {
             manager.CreateLanguage(language);
+            manager.CreateCost(cost);
             return RedirectToAction("CreatePhoto", "Step3", new { excursionID = language.ExcursionID });
         }
 

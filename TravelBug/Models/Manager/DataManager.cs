@@ -8,7 +8,7 @@ namespace TravelBug.Models.Manager
 {
     public partial class DataManager
     {
-        private TravelBugModel.TravelBug db;
+        protected TravelBugModel.TravelBug db;
         public DataManager()
         {
             db = new TravelBugModel.TravelBug();
@@ -23,21 +23,7 @@ namespace TravelBug.Models.Manager
             return db.Excursion;
         }
 
-        public IQueryable<Cost> GetCost()
-        {
-            return db.Cost;
-        }
 
-        public IQueryable<Language> GetLanguage()
-        {
-            return db.Language;
-        }
-
-       
-        public IQueryable<Time> GetTime()
-        {
-            return db.Time;
-        }
 
 
         #region Get images

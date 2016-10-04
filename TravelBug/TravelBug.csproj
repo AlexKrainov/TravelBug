@@ -127,6 +127,9 @@
     <Content Include="images\Days of the week and months\daysofweek_tue-min.png" />
     <Content Include="images\Days of the week and months\daysofweek_vie-min.png" />
     <Content Include="images\Days of the week and months\daysofweek_wed-min.png" />
+    <Content Include="images\Flag\france.png" />
+    <Content Include="images\Flag\russian_federation.png" />
+    <Content Include="images\Flag\united_kingdom_great_britain.png" />
     <Content Include="images\Norm size\24_em_cross.png" />
     <Content Include="images\Norm size\banner.jpg" />
     <Content Include="images\Norm size\overlay.png" />
@@ -192,6 +195,8 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Elements\ExcursionController.cs" />
     <Compile Include="Controllers\Pages\ExcursionToServer\CompressionImage.cs" />
+    <Compile Include="Controllers\Pages\ExcursionToServer\DropDownListEditController.cs" />
+    <Compile Include="Controllers\Pages\ExcursionToServer\EditExcursionController.cs" />
     <Compile Include="Controllers\Pages\ExcursionToServer\ShowImageController.cs" />
     <Compile Include="Controllers\Pages\ExcursionToServer\Step1Controller.cs" />
     <Compile Include="Controllers\Pages\ExcursionToServer\Step2Controller.cs" />
@@ -200,7 +205,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Manager\DataExcursionManager.cs" />
+    <Compile Include="Models\Manager\ByType\DataExcursionManager.cs" />
+    <Compile Include="Models\Manager\ByType\DataManagerByTime.cs" />
+    <Compile Include="Models\Manager\ByType\DataManagerByCost.cs" />
+    <Compile Include="Models\Manager\ByType\DataManagerByLanguage.cs" />
     <Compile Include="Models\Manager\DataManager.cs" />
     <Compile Include="Models\TravelBugModel\Cost.cs" />
     <Compile Include="Models\TravelBugModel\Excursion.cs" />
@@ -224,6 +232,8 @@
     <Content Include="Views\Step1\CreateNew.cshtml" />
     <Content Include="Views\Step2\CreateLanguage.cshtml" />
     <Content Include="Views\Step3\CreatePhoto.cshtml" />
+    <Content Include="Views\EditExcursion\Index.cshtml" />
+    <Content Include="Views\DropDownListEdit\Item.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
