@@ -53,14 +53,5 @@ namespace TravelBug.Models.Manager
             }
         }
 
-     
-
-        internal int CreatePhoto(Photo photo)
-        {
-            db.Photo.Add(photo);
-            db.SaveChanges();
-
-            return photo.ID;
-        }
     }
 }

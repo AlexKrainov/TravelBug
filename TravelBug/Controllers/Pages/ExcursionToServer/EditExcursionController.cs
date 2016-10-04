@@ -22,17 +22,46 @@ namespace TravelBug.Controllers.Pages.ExcursionToServer
         public ActionResult Index(Excursion excursion, string Name_Language, string Money)
         {
             manager.UpdateExcursion(excursion, Name_Language, Money);
-            
+
             return RedirectToAction("Index", "Home");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ImagesID"> "img2 img3 "</param>
+        /// <param name="ExcursionID">"1012"</param>
+        /// <returns></returns>
         [HttpPost]
-        public ActionResult DeleteImages(int excursionID)
+        public JsonResult JsonDeleteImages(string ImagesID, string ExcursionID)
         {
-            ViewBag.LanguageCollecion = manager.GetLanguage().ToList();
-            var currentExcursion = manager.GetExcursionByID(excursionID);
+            bool result = true; string exMessage = "";
+            string[] IDs = ImagesID.Trim().Replace("img", "").Split(' ');
 
-            return View(currentExcursion);
+            for (int i = 0; i < IDs.Length; i++)
+            {
+                try
+                {
+                    result = manager.RemovePhotoByID(Convert.ToInt32(IDs[i]));
+                    if (!result) break;
+                }
+                catch (Exception ex)
+                {
+                    exMessage = ex.Message;
+                    result = false;
+                    break;
+                }
+            }
+
+            if (result)
+            {
+                return Json(new { OnSuccess = "true" });
+            }
+            else
+            {
+                return Json(new { OnSuccess = "false", exMessage = exMessage });
+            }
+
         }
     }
 }
