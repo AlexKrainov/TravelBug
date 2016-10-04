@@ -23,7 +23,6 @@ namespace TravelBug.Controllers.Pages.ExcursionToServer
         {
             manager.UpdateExcursion(excursion, Name_Language, Money);
             
-
             return RedirectToAction("Index", "Home");
         }
 
