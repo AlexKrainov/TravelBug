@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TravelBug.Controllers.Components;
 using TravelBug.Models.TravelBugModel;
 
 namespace TravelBug.Controllers.Pages.ExcursionToServer
@@ -19,9 +20,15 @@ namespace TravelBug.Controllers.Pages.ExcursionToServer
         }
 
         [HttpPost]
-        public ActionResult Index(Excursion excursion, string Name_Language, string Money)
+        public ActionResult Index(Excursion excursion, string Name_Language, string Money,
+            HttpPostedFileBase[] Pictures)
         {
-            manager.UpdateExcursion(excursion, Name_Language, Money);
+            manager.CreateOrUpdateExcursion(excursion, Name_Language, Money);
+
+            if (Pictures != null && Pictures.Count() > 0 && Pictures[0] != null)
+            {
+                new PhotoBase().AddPhotosByExecursionID(excursion.Id, Pictures);
+            }
 
             return RedirectToAction("Index", "Home");
         }

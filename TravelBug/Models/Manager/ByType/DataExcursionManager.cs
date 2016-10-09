@@ -21,36 +21,46 @@ namespace TravelBug.Models.Manager
             return excursion.Id;
         }
 
-        internal void UpdateExcursion(Excursion excursion, string Name_Language, string Money)
+        internal Excursion CreateOrUpdateExcursion(Excursion _excursion, string Name_Language, string Money)
         {
-            Excursion oldExcursion = db.Excursion.FirstOrDefault(x => x.Id == excursion.Id);
+            Excursion excursion = db.Excursion.FirstOrDefault(x => x.Id == _excursion.Id);
 
-            if (oldExcursion != null)
+            if (excursion == null) excursion = new Excursion();
+
+            excursion.Title = _excursion.Title;
+            excursion.Description = _excursion.Description;
+            excursion.Time = _excursion.Time != null ? _excursion.Time.TrimEnd(' ') : null;
+            if (excursion.Id == 0) db.Excursion.Add(excursion);
+            db.SaveChanges();
+
+
+            #region Update language
+            string[] languages = Name_Language.Split(' ');
+            this.DeleteLanguageByExcursionID(excursion.Id);
+
+            for (int i = 0; i < languages.Count(); i++)
             {
-                oldExcursion.Title = excursion.Title;
-                oldExcursion.Description = excursion.Description;
-                oldExcursion.Time = excursion.Time.TrimEnd(' ');
-
-                #region Update language
-                string[] languages = Name_Language.Split(' ');
-                this.DeleteLanguageByExcursionID(excursion.Id);
-
-                for (int i = 0; i < languages.Count(); i++)
-                {
-                    this.CreateLanguage(languages.ElementAt(i), excursion.Id);
-                } 
-                #endregion
-
-                #region Update cost
-                Cost cost = db.Cost.FirstOrDefault(x => x.ExcursionID == excursion.Id);
-                if (cost != null)
-                {
-                    cost.Money = Money;
-                   
-                } 
-                #endregion
-                db.SaveChanges();
+                this.CreateLanguage(languages.ElementAt(i), excursion.Id);
             }
+            #endregion
+
+            #region Update cost
+            Cost cost = db.Cost.FirstOrDefault(x => x.ExcursionID == excursion.Id);
+            if (cost != null)
+            {
+                cost.Money = Money;
+            }
+            else
+            {
+                cost = new Cost();
+                cost.ExcursionID = excursion.Id;
+                cost.Money = Money;
+                db.Cost.Add(cost);
+            }
+            #endregion
+
+            db.SaveChanges();
+            return excursion;
         }
 
     }

@@ -8,7 +8,7 @@
 {
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Language.First().Name_Language, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Language.FirstOrDefault().Name_Language, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.Hidden("Name_Language", (string)ViewBag.HiddenLanguage)
             @{
@@ -51,7 +51,7 @@
 else if (ViewBag.Type == "Cost")
 {
     <div class="form-group">
-        @Html.LabelFor(model => model.Cost.First().Money, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Cost.FirstOrDefault().Money, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("Value1", new SelectList(ViewBag.Collection, "Money", "Money", ViewBag.Value),
               new { @class = "control-label col-md-2 ddl1", @onclick = "ClickDropDownList(this);" })

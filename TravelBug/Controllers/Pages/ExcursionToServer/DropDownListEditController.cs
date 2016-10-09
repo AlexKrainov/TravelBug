@@ -14,7 +14,6 @@ namespace TravelBug.Controllers.Pages.ExcursionToServer
             switch (type)
             {
                 case "Language":
-                    //List<Language> arLanguage = manager.GetLanguage().ToList();
                     var language = manager.GetLanguageByExcursionID(id);
                     if (language != null)
                     {
@@ -30,10 +29,7 @@ namespace TravelBug.Controllers.Pages.ExcursionToServer
                         ViewBag.HiddenLanguage = hiddenLanguage;
                     }
 
-                  //  ViewBag.Collection = arLanguage;
                     ViewBag.Type = "Language";
-
-                    // ViewBag.Value = language != null ? language.Name_Language : null;
                     break;
                 case "Cost":
                     List<Cost> colCost = manager.GetCost().ToList();

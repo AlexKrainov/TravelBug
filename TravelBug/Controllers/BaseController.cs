@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TravelBug.Controllers.Pages.ExcursionToServer;
 using TravelBug.Models.Manager;
+using TravelBug.Models.TravelBugModel;
 
 namespace TravelBug.Controllers
 {
@@ -14,5 +17,9 @@ namespace TravelBug.Controllers
         {
             manager = new DataManager();
         }
+
+        #region Crate photo
+     
+        #endregion
     }
 }

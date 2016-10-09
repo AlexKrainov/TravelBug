@@ -1,19 +1,17 @@
 ﻿@{
     ViewBag.Title = "CreatePhoto";
+    ViewBag.Layout = null;
 }
-
-<h2>CreatePhoto</h2>
-
 @using (Html.BeginForm("CreatePhoto", "Step3", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.TextBox("ExcursionID", (int)ViewBag.ExcursionID, new { @readonly = "readonly" })
-    
+
     <div class="file-input-wrapper">
         <button class="btn-file-input">Upload image</button>
         <input type="file" id="Pictures" name="Pictures" value="Загрузить фотки" multiple accept="image/*" onchange="handleFileSelect(this);" />
     </div>
     <div class="images"><br /></div>
-    
+
     <input type="submit" value="Save" />
 }
 

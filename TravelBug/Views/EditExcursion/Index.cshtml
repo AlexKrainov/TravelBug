@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Index", "EditExcursion", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -69,6 +69,10 @@
                     </div>
                 </div>
             </div>
+        </section>
+
+        <section id="AddImage">
+            @Html.Partial("AddImage")
         </section>
 
         <div class="form-group">

@@ -17,11 +17,11 @@ namespace TravelBug.Controllers.Pages.ExcursionToServer
         }
 
         [HttpPost]
-        public ActionResult CreateNew(Excursion excursion)
+        public ActionResult CreateNew(Excursion excursion, string Name_Language, string Money)
         {
-            int newExcursionID = manager.CreateExcursion(excursion);
+            var newExcursion = manager.CreateOrUpdateExcursion(excursion, Name_Language, Money);
 
-            return RedirectToAction("CreateLanguage", "Step2", new { excursionID = newExcursionID });
+            return RedirectToAction("CreatePhoto", "Step3", new { excursionID = newExcursion.Id });
         }
     }
 }
