@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TravelBug.Controllers.Components;
 using TravelBug.Models.TravelBugModel;
 
 namespace TravelBug.Controllers.Pages.ExcursionToServer
@@ -17,11 +18,18 @@ namespace TravelBug.Controllers.Pages.ExcursionToServer
         }
 
         [HttpPost]
-        public ActionResult CreateNew(Excursion excursion, string Name_Language, string Money)
+        public ActionResult CreateNew(Excursion excursion, string Name_Language, string Money,
+            HttpPostedFileBase[] Pictures)
         {
             var newExcursion = manager.CreateOrUpdateExcursion(excursion, Name_Language, Money);
 
-            return RedirectToAction("CreatePhoto", "Step3", new { excursionID = newExcursion.Id });
+            if (Pictures != null && Pictures.Count() > 0 && Pictures[0] != null)
+            {
+                PhotoBase photo = new PhotoBase();
+                photo.AddPhotosByExecursionID(newExcursion.Id, Pictures);
+            }
+
+            return RedirectToAction("GetAllExcursions", "Excursion");
         }
     }
 }

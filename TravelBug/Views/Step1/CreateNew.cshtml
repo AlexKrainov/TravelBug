@@ -6,7 +6,7 @@
 
 <h2>CreateNew</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("CreateNew", "Step1", null, FormMethod.Post, new { enctype = "multipart/form-data" })) 
 {
     @Html.AntiForgeryToken()
     
@@ -35,6 +35,9 @@
         @Html.Action("Item", "DropDownListEdit", new { type = "Time", id = -1 })
 
        
+        <section id="AddImage">
+            @Html.Partial("AddImagePartial")
+        </section>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

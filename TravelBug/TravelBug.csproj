@@ -195,13 +195,11 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Components\PhotoBase.cs" />
     <Compile Include="Controllers\Elements\ExcursionController.cs" />
-    <Compile Include="Controllers\Pages\ExcursionToServer\CompressionImage.cs" />
+    <Compile Include="Controllers\Components\CompressionImage.cs" />
     <Compile Include="Controllers\Pages\ExcursionToServer\DropDownListEditController.cs" />
     <Compile Include="Controllers\Pages\ExcursionToServer\EditExcursionController.cs" />
     <Compile Include="Controllers\Pages\ExcursionToServer\ShowImageController.cs" />
     <Compile Include="Controllers\Pages\ExcursionToServer\Step1Controller.cs" />
-    <Compile Include="Controllers\Pages\ExcursionToServer\Step2Controller.cs" />
-    <Compile Include="Controllers\Pages\ExcursionToServer\Step3Controller.cs" />
     <Compile Include="Controllers\Pages\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -232,11 +230,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Excursion\GetAllExcursions.cshtml" />
     <Content Include="Views\Step1\CreateNew.cshtml" />
-    <Content Include="Views\Step2\CreateLanguage.cshtml" />
-    <Content Include="Views\Step3\CreatePhoto.cshtml" />
     <Content Include="Views\EditExcursion\Index.cshtml" />
     <Content Include="Views\DropDownListEdit\Item.cshtml" />
-    <Content Include="Views\Shared\AddImage.cshtml" />
+    <Content Include="Views\Shared\AddImagePartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -34,7 +34,8 @@ namespace TravelBug.Models.Manager
 
         public Photo GetMainPhotoByExcursionID(int excursionID)
         {
-            return db.Photo.FirstOrDefault(x => x.ExcursionID == excursionID && x.ToMine);
+            //return db.Photo.FirstOrDefault(x => x.ExcursionID == excursionID && x.ToMine);
+            return db.Photo.FirstOrDefault(x => x.ExcursionID == excursionID);
         } 
         #endregion
     }
