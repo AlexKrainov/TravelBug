@@ -6,10 +6,12 @@ using System.Web.Mvc;
 
 namespace TravelBug.Controllers.Pages
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
+            ViewBag.Excursions = manager.GetExcursion().ToList();
+
             return View();
         }
     }

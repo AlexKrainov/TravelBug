@@ -1,0 +1,15 @@
+﻿.image_container {
+    display: initial;
+    margin: auto 30px auto 30px;
+}
+
+.excursion_title {
+    display: none;
+    position: relative;
+    left: 9%;
+    top: -178px;
+}
+
+.main_image {
+    width: 25%;
+}

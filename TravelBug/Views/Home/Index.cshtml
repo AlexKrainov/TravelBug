@@ -4,6 +4,10 @@
 }
 
 
-<section>
-    @Html.Action("GetAllExcursions", "Excursion")
+<section class="all_excursions">
+    @*@Html.Action("GetAllExcursions", "Excursion")*@
+    @{
+        List<TravelBug.Models.TravelBugModel.Excursion> excursions = (List<TravelBug.Models.TravelBugModel.Excursion>)ViewBag.Excursions;
+        @Html.Partial("~/Views/Partials/ExursionsPartialView.cshtml", excursions)
+    }
 </section>
