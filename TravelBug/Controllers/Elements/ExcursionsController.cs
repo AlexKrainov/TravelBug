@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace TravelBug.Controllers.Elements
 {
-    public class ExcursionController : BaseController
+    public class ExcursionsController : BaseController
     {
 
         public ActionResult GetAllExcursions()
@@ -32,6 +32,13 @@ namespace TravelBug.Controllers.Elements
             {
                 return View();
             }
+        }
+
+        public ActionResult Delete(int excursionID)
+        {
+            manager.DeleteExcursionByID(excursionID);
+
+            return RedirectToAction("GetAllExcursions");
         }
     }
 }

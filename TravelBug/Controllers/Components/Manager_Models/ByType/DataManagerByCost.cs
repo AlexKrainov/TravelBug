@@ -36,5 +36,23 @@ namespace TravelBug.Models.Manager
 
             return cost.ID;
         }
+
+        internal bool DeleteCostByExcursionID(int excursionID)
+        {
+            try
+            {
+                IQueryable<Cost> costs = db.Cost.Where(x => x.ExcursionID == excursionID);
+                if (costs != null)
+                {
+                    db.Cost.RemoveRange(costs);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

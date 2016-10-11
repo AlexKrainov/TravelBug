@@ -195,13 +195,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Components\PhotoBase.cs" />
-    <Compile Include="Controllers\Elements\ExcursionController.cs" />
+    <Compile Include="Controllers\Elements\ExcursionsController.cs" />
     <Compile Include="Controllers\Components\CompressionImage.cs" />
     <Compile Include="Controllers\Pages\ExcursionController.cs" />
     <Compile Include="Controllers\Pages\ExcursionToServer\DropDownListEditController.cs" />
     <Compile Include="Controllers\Pages\ExcursionToServer\EditExcursionController.cs" />
     <Compile Include="Controllers\Pages\ExcursionToServer\ShowImageController.cs" />
-    <Compile Include="Controllers\Pages\ExcursionToServer\Step1Controller.cs" />
+    <Compile Include="Controllers\Pages\ExcursionToServer\NewController.cs" />
     <Compile Include="Controllers\Pages\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -230,8 +230,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Excursion\GetAllExcursions.cshtml" />
-    <Content Include="Views\Step1\CreateNew.cshtml" />
+    <Content Include="Views\Excursions\GetAllExcursions.cshtml" />
+    <Content Include="Views\New\CreateNew.cshtml" />
     <Content Include="Views\EditExcursion\Index.cshtml" />
     <Content Include="Views\DropDownListEdit\Item.cshtml" />
     <Content Include="Views\Shared\AddImagePartial.cshtml" />

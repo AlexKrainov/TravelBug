@@ -10,8 +10,9 @@
     @*<script src="~/Scripts/modernizr-2.6.2.js"></script>*@
 </head>
 <body>
-    @Html.ActionLink("Create new Excursion", "CreateNew", "Step1")
-    @Html.ActionLink("get all Excursion", "GetAllExcursions", "Excursion")
+    @Html.ActionLink("Create new Excursion", "CreateNew", "New") |
+    @Html.ActionLink("get all Excursion", "GetAllExcursions", "Excursions") |
+    @Html.ActionLink("Home page", "Index", "Home") |
     <div>
         @RenderBody()
         <hr />

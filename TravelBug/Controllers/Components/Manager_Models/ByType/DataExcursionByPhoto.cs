@@ -33,5 +33,23 @@ namespace TravelBug.Models.Manager
 
             return true;
         }
+
+        internal bool DeletePhotoByExcursionID(int excursionID)
+        {
+            try
+            {
+                IQueryable<Photo> costs = db.Photo.Where(x => x.ExcursionID == excursionID);
+                if (costs != null)
+                {
+                    db.Photo.RemoveRange(costs);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

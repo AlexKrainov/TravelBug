@@ -17,7 +17,7 @@ namespace TravelBug.Controllers.Pages.ExcursionToServer
             if (picture != null)
                 return File(picture.Image, picture.ContentType);
 
-            return File("pic01.jpg", "image/jpeg");
+            return File("~/Content/images/Tour/camera-photo-min.png", "image/jpeg");
         }
     }
 }

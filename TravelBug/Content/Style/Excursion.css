@@ -3,13 +3,23 @@
     margin: auto 30px auto 30px;
 }
 
+    .image_container div {
+        border: 1px solid blue;
+        display: inline;
+    }
+
+    .image_container:hover {
+        opacity: 0.5;
+    }
+
 .excursion_title {
-    display: none;
+    /*
     position: relative;
     left: 9%;
-    top: -178px;
+    top: -178px;*/
 }
 
 .main_image {
     width: 25%;
+    display: block;
 }

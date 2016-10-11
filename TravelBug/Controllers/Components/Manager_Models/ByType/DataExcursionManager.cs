@@ -63,5 +63,32 @@ namespace TravelBug.Models.Manager
             return excursion;
         }
 
+        internal bool DeleteExcursionByID(int id)
+        {
+            bool value = true;
+            try
+            {
+                Excursion excur = db.Excursion.FirstOrDefault(x => x.Id == id);
+                if (excur != null)
+                {
+                   value = value && this.DeleteCostByExcursionID(id);
+                   value = value && this.DeleteLanguageByExcursionID(id);
+                   value = value && this.DeletePhotoByExcursionID(id);
+
+                   if (value)
+                   {
+                       db.Excursion.Remove(excur);
+                       db.SaveChanges();
+                   }
+                   else
+                       return false;
+                }
+                return true;
+            }
+            catch( Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

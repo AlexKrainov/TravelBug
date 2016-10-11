@@ -8,7 +8,7 @@ using TravelBug.Models.TravelBugModel;
 
 namespace TravelBug.Controllers.Pages.ExcursionToServer
 {
-    public class Step1Controller : BaseController
+    public class NewController : BaseController
     {
         [HttpGet]
         public ActionResult CreateNew()

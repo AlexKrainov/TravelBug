@@ -7,19 +7,26 @@
         @for (int i = 0; i < Model.Count(); i++)
         {
             <li class="image_container">
-                <span class="excursion_title">@Model[i].Title</span>
-                <a href="/Pages/Excursion/View?excursionID=@Model[i].Id">
-                    @if (Model[i].Photo != null && Model[i].Photo.Count > 0)
-                    {
-                        <img class="main_image" src="@Url.Action("GetUrlFromPictureOfExcursion", "ShowImage", new { excursionID = Model[i].Id })" alt="" />
-                    }
-                    else
-                    {
-                        <img class="main_image" src="~/Content/images/Tour/camera-photo-min.png" alt="" />
-                    }
-                </a>
+                <div>
+                    <span class="excursion_title">@Model[i].Title</span>
+
+                    <a href="/Excursion/View?excursionID=@Model[i].Id">
+                        @if (Model[i].Photo != null && Model[i].Photo.Count > 0)
+                        {
+                            <img class="main_image" src="@Url.Action("GetUrlFromPictureOfExcursion", "ShowImage", new { excursionID = Model[i].Id })" alt="" />
+                        }
+                        else
+                        {
+                            <img class="main_image" src="~/Content/images/Tour/camera-photo-min.png" alt="" />
+                        }
+                    </a>
+                </div>
             </li>
         }
     </ul>
 </div>
 @*@Html.Partial("~/Views/Partials/ExcursionPartialView.cshtml", Model[i])*@
+
+<script>
+
+</script>

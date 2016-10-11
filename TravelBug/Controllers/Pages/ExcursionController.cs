@@ -11,8 +11,6 @@ namespace TravelBug.Controllers.Pages
         [HttpGet]
         public ActionResult View(int excursionID)
         {
-
-
             return View(manager.GetExcursionByID(excursionID));
         }
     }

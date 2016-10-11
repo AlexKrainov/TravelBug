@@ -10,18 +10,21 @@
 
         var Excursions = (List<TravelBug.Models.TravelBugModel.Excursion>)ViewBag.Excursions;
 
-        <table>
+        <table class="gridview">
             <tr>
+                <th>id</th>
                 <th>@Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })</th>
                 <th>@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })</th>
                 <th>@Html.LabelFor(model => model.Time, htmlAttributes: new { @class = "control-label col-md-2" })</th>
                 <th>@Html.LabelFor(model => model.Language.FirstOrDefault().Name_Language, htmlAttributes: new { @class = "control-label col-md-2" })</th>
                 <th>@Html.LabelFor(model => model.Photo.FirstOrDefault().Image, htmlAttributes: new { @class = "control-label col-md-2" })</th>
+                <th>Delete</th>
             </tr>
             @for (int i = 0; i < Excursions.Count; i++)
             {
 
                 <tr>
+                    <td>@Excursions[i].Id</td>
                     <td>@Html.ActionLink(Excursions[i].Title, "Index", "EditExcursion", new { excursionID = @Excursions[i].Id }, new { @class = "button alt small" })</td>
                     <td>@Excursions[i].Description</td>
                     <td>@Excursions[i].Time</td>
@@ -31,7 +34,7 @@
                             @Excursions[i].Language.ElementAt(0).Name_Language;
                         }
                     </td>
-                    <td>
+                    <td style="width: 100px;">
                         @if (Excursions[i].Photo.Count() != 0)
                         {
                             <img id="img" src="@Url.Action("GetUrlFromPictureOfExcursion", "ShowImage",
@@ -43,12 +46,23 @@
                         }
                         else
                         {
-                            <img id="img" src="~/images/Tour/camera-photo-min.png" alt="" style=" width: 10%; margin: 0 auto 0 auto;" />
+                            <img id="img" src="~/Content/images/Tour/camera-photo-min.png" alt="" style=" width: 10%; margin: 0 auto 0 auto;" />
                         }
                     </td>
+                    <td>@Html.ActionLink("Delete", "Delete", "Excursions", new { excursionID = @Excursions[i].Id }, new { @class = "button alt small" })</td>
                 </tr>
 
             }
         </table>
     }
 </div>
+
+<style>
+    #img {
+        width: 100%;
+    }
+
+    .gridview  tr  td, th {
+        border: 1px black solid;
+    }
+</style>
