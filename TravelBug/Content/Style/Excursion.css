@@ -1,4 +1,4 @@
-﻿.image_container {
+﻿/*.image_container {
     display: initial;
     margin: auto 30px auto 30px;
 }
@@ -12,14 +12,33 @@
         opacity: 0.5;
     }
 
-.excursion_title {
+.excursion_title { */
     /*
     position: relative;
     left: 9%;
     top: -178px;*/
+    /*
 }
 
 .main_image {
     width: 25%;
     display: block;
+}*/
+.image_container {
+        display: inline;
+    margin-right: 5px;
+    border: 1px solid #000;
+    padding: 3px;
+}
+.main_image {
+    width: 30%;
+}
+
+.excursion_title {
+    display: none;
+}
+.test {
+        float: left;
+    width: 390px;
+    margin: 8px 0 25px 8px;
 }

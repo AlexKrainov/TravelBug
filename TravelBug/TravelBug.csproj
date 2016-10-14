@@ -94,6 +94,8 @@
     <Content Include="App_Data\TravelBug_log.ldf">
       <DependentUpon>TravelBug.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\Scripts\Slider\jR3DCarousel.js" />
+    <Content Include="Content\Scripts\Slider\jR3DCarousel.min.js" />
     <Content Include="Content\Style\bootstrap.css" />
     <Content Include="Content\Style\bootstrap.min.css" />
     <Content Include="Content\Style\Excursion.css" />
@@ -197,6 +199,7 @@
     <Compile Include="Controllers\Components\PhotoBase.cs" />
     <Compile Include="Controllers\Elements\ExcursionsController.cs" />
     <Compile Include="Controllers\Components\CompressionImage.cs" />
+    <Compile Include="Controllers\Elements\SliderController.cs" />
     <Compile Include="Controllers\Pages\ExcursionController.cs" />
     <Compile Include="Controllers\Pages\ExcursionToServer\DropDownListEditController.cs" />
     <Compile Include="Controllers\Pages\ExcursionToServer\EditExcursionController.cs" />
@@ -238,6 +241,7 @@
     <Content Include="Views\Partials\ExursionsPartialView.cshtml" />
     <Content Include="Views\Partials\ExcursionPartialView.cshtml" />
     <Content Include="Views\Excursion\View.cshtml" />
+    <Content Include="Views\Slider\View.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
