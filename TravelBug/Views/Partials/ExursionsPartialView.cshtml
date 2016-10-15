@@ -1,33 +1,30 @@
 ﻿@model List<TravelBug.Models.TravelBugModel.Excursion>
 
-<link href="~/Content/Style/Excursion.css" type="text/css" rel="stylesheet" />
+<div class="container">
+    <header class="major">
+        <div class="row 150%">
+            @for (int i = 1; i < Model.Count(); i++)
+            {
+                var cl = i % 3 != 0 ? "4u" : "4u$";
+                <div class="@cl">
+                    <span class="image fit">
+                        @if (Model[i].Photo != null && Model[i].Photo.Count > 0)
+                {
+                            <img src="@Url.Action("GetUrlFromPictureOfExcursion", "ShowImage", new { excursionID = Model[i].Id })" alt="" />
+                        }
+                        else
+                        {
+                            <img src="~/Content/images/Tour/camera-photo-min.png" alt="" />
+                        }
 
-<div>
-    <ul class="grid list-votes-users">
-        @for (int i = 0; i < Model.Count(); i++)
-        {
-            <li class="col n-6">
+                        <a href="/Excursion/View?excursionID=@Model[i].Id"></a>
+                    </span>
+                </div>
+                    @*<h4>@Model[i].Title</h4>*@
+            }
 
-
-
-                <a href="/Excursion/View?excursionID=@Model[i].Id">
-                    @if (Model[i].Photo != null && Model[i].Photo.Count > 0)
-                    {
-                        <img class="main_image" src="@Url.Action("GetUrlFromPictureOfExcursion", "ShowImage", new { excursionID = Model[i].Id })" alt="" />
-                    }
-                    else
-                    {
-                        <img class="main_image" src="~/Content/images/Tour/camera-photo-min.png" alt="" />
-                    }
-                    <span class="info">@Model[i].Title</span>
-                </a>
-
-            </li>
-        }
-    </ul>
+        </div>
+    </header>
 </div>
+
 @*@Html.Partial("~/Views/Partials/ExcursionPartialView.cshtml", Model[i])*@
-
-<script>
-
-</script>

@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -94,19 +95,45 @@
     <Content Include="App_Data\TravelBug_log.ldf">
       <DependentUpon>TravelBug.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\images\bokeh_car_lights_bg.jpg" />
+    <Content Include="Content\images\dark_tint.png" />
+    <Content Include="Content\images\pic02.jpg" />
+    <Content Include="Content\images\pic03.jpg" />
+    <Content Include="Content\images\pic04.jpg" />
+    <Content Include="Content\images\pic07.jpg" />
+    <Content Include="Content\images\pic08.jpg" />
+    <Content Include="Content\images\profile_placeholder.gif" />
+    <Content Include="Content\license.txt" />
+    <Content Include="Content\Scripts\js\html5shiv.js" />
+    <Content Include="Content\Scripts\js\init.js" />
+    <Content Include="Content\Scripts\js\jquery.min.js" />
+    <Content Include="Content\Scripts\js\skel-layers.min.js" />
+    <Content Include="Content\Scripts\js\skel.min.js" />
     <Content Include="Content\Scripts\Slider\jR3DCarousel.js" />
     <Content Include="Content\Scripts\Slider\jR3DCarousel.min.js" />
     <Content Include="Content\Style\bootstrap.css" />
     <Content Include="Content\Style\bootstrap.min.css" />
+    <Content Include="Content\Style\css\font-awesome.min.css" />
+    <Content Include="Content\Style\css\skel.css" />
+    <Content Include="Content\Style\css\style-large.css" />
+    <Content Include="Content\Style\css\style-medium.css" />
+    <Content Include="Content\Style\css\style-small.css" />
+    <Content Include="Content\Style\css\style-xlarge.css" />
+    <Content Include="Content\Style\css\style-xsmall.css" />
+    <Content Include="Content\Style\css\style.css" />
     <Content Include="Content\Style\Excursion.css" />
+    <Content Include="Content\Style\images\bokeh_car_lights_bg.jpg" />
+    <Content Include="Content\Style\images\dark_tint.png" />
+    <Content Include="Content\Style\images\pic02.jpg" />
+    <Content Include="Content\Style\images\pic03.jpg" />
+    <Content Include="Content\Style\images\pic04.jpg" />
+    <Content Include="Content\Style\images\pic07.jpg" />
+    <Content Include="Content\Style\images\pic08.jpg" />
+    <Content Include="Content\Style\images\profile_placeholder.gif" />
     <Content Include="Content\Style\Site.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\images\0011-011-Do-skoroj-vstrechi.jpg" />
-    <Content Include="Content\images\24_em_cross.png" />
     <Content Include="Content\images\404.jpg" />
-    <Content Include="Content\images\banner.jpg" />
-    <Content Include="Content\images\Beautiful-Moscow-City-Wallpaper-min.jpg" />
     <Content Include="Content\images\Days of the week and months\daysofweek_dim-min.png" />
     <Content Include="Content\images\Days of the week and months\daysofweek_dom-min.png" />
     <Content Include="Content\images\Days of the week and months\daysofweek_fri-min.png" />
@@ -147,18 +174,6 @@
     <Content Include="Content\images\Norm size\pic09.jpg" />
     <Content Include="Content\images\Norm size\pic10.jpg" />
     <Content Include="Content\images\Norm size\pic11.jpg" />
-    <Content Include="Content\images\overlay.png" />
-    <Content Include="Content\images\pic01.jpg" />
-    <Content Include="Content\images\pic02.jpg" />
-    <Content Include="Content\images\pic03.jpg" />
-    <Content Include="Content\images\pic04.jpg" />
-    <Content Include="Content\images\pic05.jpg" />
-    <Content Include="Content\images\pic06.jpg" />
-    <Content Include="Content\images\pic07.jpg" />
-    <Content Include="Content\images\pic08.jpg" />
-    <Content Include="Content\images\pic09.jpg" />
-    <Content Include="Content\images\pic10.jpg" />
-    <Content Include="Content\images\pic11.jpg" />
     <Content Include="Content\images\Profile\default_avatar-min.jpg" />
     <Content Include="Content\images\Profile\default_avatar-min2.jpg" />
     <Content Include="Content\images\Profile\edit.png" />
@@ -187,6 +202,10 @@
     <Content Include="Content\images\Tour\dollar1.png" />
     <Content Include="Content\Scripts\bootstrap.js" />
     <Content Include="Content\Scripts\bootstrap.min.js" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
     <None Include="Content\Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\Scripts\jquery-1.10.2.js" />
     <Content Include="Content\Scripts\jquery-1.10.2.min.js" />
@@ -228,9 +247,6 @@
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Excursions\GetAllExcursions.cshtml" />
