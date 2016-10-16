@@ -2,13 +2,14 @@
 
 @{
     ViewBag.Title = "Index";
+    this.Layout = "~/Views/Shared/_LayoutCastom.cshtml";
 }
 
 @using (Html.BeginForm("Index", "EditExcursion", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+    <div>
         <h4>Excursion</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })

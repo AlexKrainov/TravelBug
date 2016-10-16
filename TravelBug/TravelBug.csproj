@@ -258,6 +258,7 @@
     <Content Include="Views\Partials\ExcursionPartialView.cshtml" />
     <Content Include="Views\Excursion\View.cshtml" />
     <Content Include="Views\Slider\View.cshtml" />
+    <Content Include="Views\Shared\_LayoutCastom.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

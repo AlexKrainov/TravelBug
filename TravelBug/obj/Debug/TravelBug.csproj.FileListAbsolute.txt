@@ -56,3 +56,4 @@ C:\Users\Alex\Source\Repos\TravelBug\TravelBug\bin\ru\System.Web.Helpers.resourc
 C:\Users\Alex\Source\Repos\TravelBug\TravelBug\bin\ru\System.Web.Mvc.resources.dll
 C:\Users\Alex\Source\Repos\TravelBug\TravelBug\obj\Debug\TravelBug.dll
 C:\Users\Alex\Source\Repos\TravelBug\TravelBug\obj\Debug\TravelBug.pdb
+C:\Users\Alex\Source\Repos\TravelBug\TravelBug\obj\Debug\TravelBug.csprojResolveAssemblyReference.cache
