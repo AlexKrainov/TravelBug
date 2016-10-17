@@ -98,6 +98,8 @@
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\bokeh_car_lights_bg.jpg" />
     <Content Include="Content\images\dark_tint.png" />
+    <Content Include="Content\images\New images\money.png" />
+    <Content Include="Content\images\New images\time.png" />
     <Content Include="Content\images\pic02.jpg" />
     <Content Include="Content\images\pic03.jpg" />
     <Content Include="Content\images\pic04.jpg" />
@@ -255,9 +257,8 @@
     <Content Include="Views\DropDownListEdit\Item.cshtml" />
     <Content Include="Views\Shared\AddImagePartial.cshtml" />
     <Content Include="Views\Partials\ExursionsPartialView.cshtml" />
-    <Content Include="Views\Partials\ExcursionPartialView.cshtml" />
     <Content Include="Views\Excursion\View.cshtml" />
-    <Content Include="Views\Slider\View.cshtml" />
+    <Content Include="Views\Partials\SliderPartial.cshtml" />
     <Content Include="Views\Shared\_LayoutCastom.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -268,6 +269,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\ShowImage\" />
+    <Folder Include="Views\Slider\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

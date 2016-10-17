@@ -16,6 +16,12 @@ namespace TravelBug.Models.Manager
             return photo.ID;
         }
 
+        internal Photo GetPhotoByID(int id)
+        {
+            return db.Photo.FirstOrDefault(x => x.ID == id);
+
+        }
+
         internal bool RemovePhotoByID(int id)
         {
             try

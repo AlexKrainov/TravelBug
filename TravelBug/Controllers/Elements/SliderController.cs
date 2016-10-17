@@ -6,12 +6,13 @@ using System.Web.Mvc;
 
 namespace TravelBug.Controllers.Elements
 {
-    public class SliderController : Controller
+    public class SliderController : BaseController
     {
 
-        public ActionResult View()
+        public ActionResult SliderPartial(int excursionID)
         {
-            return PartialView("View");
+            ViewData.Model = manager.GetExcursionByID(excursionID).Photo;
+            return PartialView("SliderPartial");
         }
     }
 }

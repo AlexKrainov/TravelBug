@@ -19,5 +19,16 @@ namespace TravelBug.Controllers.Pages.ExcursionToServer
 
             return File("~/Content/images/Tour/camera-photo-min.png", "image/jpeg");
         }
+
+        public ActionResult GetImage(int id)
+        {
+            Photo picture = manager.GetPhotoByID(id);
+
+
+            if (picture != null)
+                return File(picture.Image, picture.ContentType);
+
+            return File("~/Content/images/Tour/camera-photo-min.png", "image/jpeg");
+        }
     }
 }
