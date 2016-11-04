@@ -6,9 +6,17 @@
 @*@Html.TextBox("ExcursionID", (int)ViewBag.ExcursionID, new { @readonly = "readonly" })*@
 @*@Html.Hidden("excursionID", (int)ViewBag.ExcursionID)*@
 
+<style>
+    /*.btn-file-input {
+        display: none;
+    }*/
+</style>
+
 <div class="file-input-wrapper">
-    <button class="btn-file-input">Upload image</button>
-    <input type="file" id="Pictures" name="Pictures" value="Загрузить фотки" multiple accept="image/*" onchange="handleFileSelect(this);" />
+    @*<button class="btn-file-input">Upload image</button>*@
+    <span class="button alt icon fa-download" onclick="LoadImages();" >Load images</span>
+    <input type="file" id="Pictures" name="Pictures" value="Загрузить фотки"
+           multiple accept="image/*" onchange="handleFileSelect(this);" style="display: none;" />
 </div>
 <div class="images"><br /></div>
 
@@ -85,6 +93,9 @@
         return false;
     }
 
+    function LoadImages() {
+        $("#Pictures").click();
+    }
     // End Remove Picutre
 </script>
 

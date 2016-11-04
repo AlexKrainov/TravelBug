@@ -10,7 +10,7 @@ namespace TravelBug.Controllers.Elements
     public class ExcursionsController : BaseController
     {
 
-        public ActionResult GetAllExcursions()
+        public ActionResult AdminPage()
         {
             ViewBag.Excursions = manager.GetExcursion().ToList();
             return View();
@@ -38,7 +38,7 @@ namespace TravelBug.Controllers.Elements
         {
             manager.DeleteExcursionByID(excursionID);
 
-            return RedirectToAction("GetAllExcursions");
+            return RedirectToAction("AdminPage");
         }
     }
 }

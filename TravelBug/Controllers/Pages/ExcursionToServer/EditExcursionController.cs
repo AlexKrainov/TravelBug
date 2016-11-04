@@ -30,7 +30,7 @@ namespace TravelBug.Controllers.Pages.ExcursionToServer
                 new PhotoBase().AddPhotosByExecursionID(excursion.Id, Pictures);
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("AdminPage", "Excursions");
         }
 
         /// <summary>

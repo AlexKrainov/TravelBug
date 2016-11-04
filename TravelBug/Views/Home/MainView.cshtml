@@ -8,7 +8,7 @@
         @Html.Partial("~/Views/Partials/SliderParialView.cshtml")
     </section>
 <section id="one" class="wrapper style1 special">
-    @*@Html.Action("GetAllExcursions", "Excursion")*@
+    @*@Html.Action("AdminPage", "Excursion")*@
     @{
         List<TravelBug.Models.TravelBugModel.Excursion> excursions = (List<TravelBug.Models.TravelBugModel.Excursion>)ViewBag.Excursions;
         @Html.Partial("~/Views/Partials/ExursionsPartialView.cshtml", excursions)
