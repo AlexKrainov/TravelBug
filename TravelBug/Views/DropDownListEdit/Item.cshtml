@@ -50,27 +50,27 @@
 }
 else if (ViewBag.Type == "Cost")
 {
-    <div class="form-group">
+    @*<div class="3u$">*@
         @Html.LabelFor(model => model.Cost.FirstOrDefault().Money, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <div class="select-wrapper inputText">
             @Html.DropDownList("Value1", new SelectList(ViewBag.Collection, "Money", "Money", ViewBag.Value),
-              new { @class = "control-label col-md-2 ddl1", @onclick = "ClickDropDownList(this);" })
+              new {  @onclick = "ClickDropDownList(this);" })
 
-            @Html.TextBox("Money", (string)ViewBag.Value, new { @id = ViewBag.txtID, @class = "form-control ddl2" })
+            @Html.TextBox("Money", (string)ViewBag.Value, new { @id = ViewBag.txtID, @class = "4u$ 3u$(2)" })
         </div>
-    </div>
+    @*</div>*@
 }
 else if (ViewBag.Type == "Time")
 {
-    <div class="form-group">
+    @*<div class="5u$">*@
         @Html.LabelFor(model => model.Time, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <div class="select-wrapper inputText">
             @Html.DropDownList("Value1", new SelectList(ViewBag.Collection, "Option", "Option", ViewBag.Value),
-                 new { @class = "control-label col-md-2 ddl1", @onclick = "ClickDropDownList(this);" })
-
-            @Html.TextBox("Time", (string)ViewBag.Value, new { @id = ViewBag.txtID, @class = "form-control ddl2" })
+                 new { @onclick = "ClickDropDownList(this);" })
+            
+            @Html.TextBox("Time", (string)ViewBag.Value, new { @id = ViewBag.txtID, @class = "" })
         </div>
-    </div>
+    @*</div>*@
 }
 
 

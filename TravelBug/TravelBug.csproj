@@ -134,6 +134,8 @@
     <Content Include="Content\Style\images\pic08.jpg" />
     <Content Include="Content\Style\images\profile_placeholder.gif" />
     <Content Include="Content\Style\Site.css" />
+    <Content Include="elements.html" />
+    <Content Include="generic.html" />
     <Content Include="Global.asax" />
     <Content Include="Content\images\404.jpg" />
     <Content Include="Content\images\Days of the week and months\daysofweek_dim-min.png" />
@@ -212,6 +214,7 @@
     <Content Include="Content\Scripts\jquery-1.10.2.js" />
     <Content Include="Content\Scripts\jquery-1.10.2.min.js" />
     <Content Include="Content\Scripts\modernizr-2.6.2.js" />
+    <Content Include="index.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -225,7 +228,7 @@
     <Compile Include="Controllers\Pages\ExcursionToServer\DropDownListEditController.cs" />
     <Compile Include="Controllers\Pages\ExcursionToServer\EditExcursionController.cs" />
     <Compile Include="Controllers\Pages\ExcursionToServer\ShowImageController.cs" />
-    <Compile Include="Controllers\Pages\ExcursionToServer\NewController.cs" />
+    <Compile Include="Controllers\Pages\ExcursionToServer\CreateController.cs" />
     <Compile Include="Controllers\Pages\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -250,9 +253,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Content\Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Excursions\GetAllExcursions.cshtml" />
-    <Content Include="Views\New\CreateNew.cshtml" />
+    <Content Include="Views\Home\MainView.cshtml" />
+    <Content Include="Views\Excursions\AdminPage.cshtml" />
+    <Content Include="Views\Create\Excursion.cshtml" />
     <Content Include="Views\EditExcursion\Index.cshtml" />
     <Content Include="Views\DropDownListEdit\Item.cshtml" />
     <Content Include="Views\Shared\AddImagePartial.cshtml" />
@@ -268,6 +271,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="css\" />
+    <Folder Include="fonts\" />
+    <Folder Include="images\" />
+    <Folder Include="js\" />
     <Folder Include="Views\ShowImage\" />
     <Folder Include="Views\Slider\" />
   </ItemGroup>

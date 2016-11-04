@@ -8,17 +8,17 @@ using TravelBug.Models.TravelBugModel;
 
 namespace TravelBug.Controllers.Pages.ExcursionToServer
 {
-    public class NewController : BaseController
+    public class CreateController : BaseController
     {
         [HttpGet]
-        public ActionResult CreateNew()
+        public ActionResult Excursion()
         {
             ViewBag.TimeCollection = manager.GetTime().ToList();
             return View();
         }
 
         [HttpPost]
-        public ActionResult CreateNew(Excursion excursion, string Name_Language, string Money,
+        public ActionResult Excursion(Excursion excursion, string Name_Language, string Money,
             HttpPostedFileBase[] Pictures)
         {
             var newExcursion = manager.CreateOrUpdateExcursion(excursion, Name_Language, Money);
@@ -29,7 +29,7 @@ namespace TravelBug.Controllers.Pages.ExcursionToServer
                 photo.AddPhotosByExecursionID(newExcursion.Id, Pictures);
             }
 
-            return RedirectToAction("GetAllExcursions", "Excursion");
+            return RedirectToAction("AdminPage", "Excursion");
         }
     }
 }
