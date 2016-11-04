@@ -1,0 +1,101 @@
+﻿<style>
+    #validateText {
+        color: orangered;
+    }
+</style>
+<script src="~/Content/Scripts/jquery-3.1.1.min.js"></script>
+
+<div class="container">
+    <header class="major">
+        <h2>Consectetur adipisicing elit</h2>
+        <p>Lorem ipsum dolor sit amet. Delectus consequatur, similique quia!</p>
+    </header>
+</div>
+<div class="container 50%">
+    @*<form action="#" method="post">*@
+    <div class="row uniform">
+        <div class="6u 12u$(small)">
+            <input name="name" id="name" value="" placeholder="Name" type="text">
+        </div>
+        <div class="6u$ 12u$(small)">
+            <input name="email" id="email" value="" placeholder="Email" type="email">
+        </div>
+        <div class="6u$ 12u$(small)">
+            <input name="phone" id="phone" value="" placeholder="Phone\Skype\WhatsApp" type="text">
+        </div>
+        <div class="12u$">
+            <textarea name="message" id="message" placeholder="Message" rows="6"></textarea>
+        </div>
+        <div class="12u$">
+            <ul class="actions">
+                <li><input value="Send Message" class="special big" type="submit" onclick="SendMessage();"></li>
+            </ul>
+        </div>
+        <div id="validateText" style="display:none;">Please, fill in the form.</div>
+    </div>
+    @*</form>*@
+</div>
+
+<script>
+    function SendMessage() {
+
+        if (Validate()) {
+            var email = $("#email").val();
+            var phone = $("#phone").val();
+            var message = $("#message").val();
+            var name = $("#name").val();
+            var jsonValue = "{ 'name': '" + name + "', 'Email': '" + email + "', 'phone': '" + phone + "', 'message': '" + message + "' }";
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                url: "/Ajax/ContactForm",
+                data: jsonValue,
+                success: OnSuccess,
+                error: OnError,
+            });
+
+        } else {
+            console.log("True");
+            ShowHideValidateText();
+        }
+    }
+
+    function OnSuccess(date) {
+        if (date.ContactFormType == "isEmptyEmailorPhone") {
+            console.log(date.message);
+        }
+        else if (date.ContactFormType == "isEmptyMessage") {
+            console.log(date.message);
+        }
+        else if (date.ContactFormType == "isOk") {
+            console.log(date.message);
+        }
+    }
+
+    function OnError() {
+        console.log("Message not send ");
+    }
+
+    function Validate() {
+        var email = $("#email").val();
+        var phone = $("#phone").val();
+        var message = $("#message").val();
+
+        if (email.length == 0 && phone.length == 0 && message.length == 0)
+            return false;
+        else
+            return true;
+    }
+
+    function ShowHideValidateText() {
+        var style = $("#validateText").attr("style");
+        console.log(style);
+        if (style == "display:none;") {
+            $("#validateText").attr("style", "")
+        } else {
+            $("#validateText").attr("style", "display:none;")
+        }
+    }
+</script>

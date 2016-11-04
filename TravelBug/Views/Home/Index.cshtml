@@ -3,9 +3,10 @@
    
 }
 
-<section class="slider">
     @*@Html.Action("View", "Slider")*@
-</section>
+    <section id="two" class="wrapper style2 special slider">
+        @Html.Partial("~/Views/Partials/SliderParialView.cshtml")
+    </section>
 <section id="one" class="wrapper style1 special">
     @*@Html.Action("GetAllExcursions", "Excursion")*@
     @{
@@ -13,3 +14,8 @@
         @Html.Partial("~/Views/Partials/ExursionsPartialView.cshtml", excursions)
     }
 </section>
+<section id="three" class="wrapper style3 special">
+    @Html.Partial("~/Views/Partials/ContactFormPartial.cshtml")
+</section>
+
+
