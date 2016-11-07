@@ -107,8 +107,6 @@
     <Content Include="Content\images\pic08.jpg" />
     <Content Include="Content\images\profile_placeholder.gif" />
     <Content Include="Content\license.txt" />
-    <Content Include="Content\Scripts\jquery-3.1.1.js" />
-    <Content Include="Content\Scripts\jquery-3.1.1.min.js" />
     <Content Include="Content\Scripts\js\html5shiv.js" />
     <Content Include="Content\Scripts\js\init.js" />
     <Content Include="Content\Scripts\js\jquery.min.js" />
@@ -223,7 +221,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Components\PhotoBase.cs" />
-    <Compile Include="Controllers\Elements\AjaxController.cs" />
     <Compile Include="Controllers\Elements\ExcursionsController.cs" />
     <Compile Include="Controllers\Components\CompressionImage.cs" />
     <Compile Include="Controllers\Elements\SliderController.cs" />
@@ -266,8 +263,8 @@
     <Content Include="Views\Excursion\View.cshtml" />
     <Content Include="Views\Partials\SliderPartial.cshtml" />
     <Content Include="Views\Shared\_LayoutCastom.cshtml" />
-    <Content Include="Views\Partials\SliderParialView.cshtml" />
     <Content Include="Views\Partials\ContactFormPartial.cshtml" />
+    <Content Include="Views\Partials\SliderPartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -276,10 +273,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="css\" />
-    <Folder Include="fonts\" />
-    <Folder Include="images\" />
-    <Folder Include="js\" />
     <Folder Include="Views\ShowImage\" />
     <Folder Include="Views\Slider\" />
   </ItemGroup>
