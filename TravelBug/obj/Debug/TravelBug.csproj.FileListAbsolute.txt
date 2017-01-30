@@ -88,3 +88,4 @@ C:\Users\akraynov\Source\Repos\TravelBug\TravelBug\obj\Debug\TravelBug.csprojRes
 C:\Users\akraynov\Source\Repos\TravelBug\TravelBug\obj\Debug\TravelBug.dll
 C:\Users\akraynov\Source\Repos\TravelBug\TravelBug\obj\Debug\TravelBug.pdb
 C:\Users\akraynov\Source\Repos\TravelBug\TravelBug\bin\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\Alex\Source\Repos\TravelBug\TravelBug\bin\ru\EntityFramework.SqlServer.resources.dll

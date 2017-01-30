@@ -8,7 +8,7 @@ namespace TravelBug.Controllers.Pages
 {
     public class HomeController : BaseController
     {
-        public ActionResult MainView()
+        public ActionResult Home()
         {
             ViewBag.Excursions = manager.GetExcursion().ToList();
 

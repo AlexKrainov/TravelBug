@@ -95,6 +95,13 @@
     <Content Include="App_Data\TravelBug_log.ldf">
       <DependentUpon>TravelBug.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\angular-material.css" />
+    <Content Include="Content\angular-material.layout-attributes.css" />
+    <Content Include="Content\angular-material.layout-attributes.min.css" />
+    <Content Include="Content\angular-material.layouts.css" />
+    <Content Include="Content\angular-material.layouts.ie_fixes.css" />
+    <Content Include="Content\angular-material.layouts.min.css" />
+    <Content Include="Content\angular-material.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\bokeh_car_lights_bg.jpg" />
     <Content Include="Content\images\dark_tint.png" />
@@ -215,6 +222,20 @@
     <Content Include="Content\Scripts\jquery-1.10.2.min.js" />
     <Content Include="Content\Scripts\modernizr-2.6.2.js" />
     <Content Include="index.html" />
+    <Content Include="Scripts\angular-animate\angular-animate.js" />
+    <Content Include="Scripts\angular-animate\angular-animate.min.js" />
+    <Content Include="Scripts\angular-aria\angular-aria.js" />
+    <Content Include="Scripts\angular-aria\angular-aria.min.js" />
+    <Content Include="Scripts\angular-material\angular-material-mocks.js" />
+    <Content Include="Scripts\angular-material\angular-material.js" />
+    <Content Include="Scripts\angular-material\angular-material.min.js" />
+    <Content Include="Scripts\angular\angular.js" />
+    <Content Include="Scripts\angular\angular.min.js" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +245,7 @@
     <Compile Include="Controllers\Elements\ExcursionsController.cs" />
     <Compile Include="Controllers\Components\CompressionImage.cs" />
     <Compile Include="Controllers\Elements\SliderController.cs" />
+    <Compile Include="Controllers\Pages\AdminController.cs" />
     <Compile Include="Controllers\Pages\ExcursionController.cs" />
     <Compile Include="Controllers\Pages\ExcursionToServer\DropDownListEditController.cs" />
     <Compile Include="Controllers\Pages\ExcursionToServer\EditExcursionController.cs" />
@@ -253,7 +275,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Content\Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Home\MainView.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Excursions\AdminPage.cshtml" />
     <Content Include="Views\Create\Excursion.cshtml" />
     <Content Include="Views\EditExcursion\Index.cshtml" />
@@ -265,6 +287,11 @@
     <Content Include="Views\Shared\_LayoutCastom.cshtml" />
     <Content Include="Views\Partials\ContactFormPartial.cshtml" />
     <Content Include="Views\Partials\SliderPartialView.cshtml" />
+    <Content Include="Scripts\angular-aria\angular-aria.min.js.map" />
+    <Content Include="Scripts\angular-animate\angular-animate.min.js.map" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Admin\View.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
