@@ -226,16 +226,39 @@
     <Content Include="Scripts\angular-animate\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria\angular-aria.js" />
     <Content Include="Scripts\angular-aria\angular-aria.min.js" />
+    <Content Include="Scripts\angular-file-upload\angular-file-upload.js" />
+    <Content Include="Scripts\angular-file-upload\angular-file-upload.min.js" />
     <Content Include="Scripts\angular-material\angular-material-mocks.js" />
     <Content Include="Scripts\angular-material\angular-material.js" />
     <Content Include="Scripts\angular-material\angular-material.min.js" />
+    <Content Include="Scripts\angular-messages\angular-messages.js" />
+    <Content Include="Scripts\angular-messages\angular-messages.min.js" />
+    <Content Include="Scripts\angular-route\angular-route.js" />
+    <Content Include="Scripts\angular-route\angular-route.min.js" />
+    <Content Include="Scripts\angular-sanitize\angular-sanitize.js" />
+    <Content Include="Scripts\angular-sanitize\angular-sanitize.min.js" />
     <Content Include="Scripts\angular\angular.js" />
     <Content Include="Scripts\angular\angular.min.js" />
+    <Content Include="Scripts\angular-file-upload\angular-file-upload.js.map" />
+    <Content Include="Scripts\angular-file-upload\angular-file-upload.min.js.map" />
+    <Content Include="Scripts\angular-messages\angular-messages.min.js.map" />
+    <Content Include="Scripts\angular-route\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-sanitize\angular-sanitize.min.js.map" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\md-data-table-master\md-data-table.css" />
+    <Content Include="Scripts\md-data-table-master\md-data-table.js" />
+    <Content Include="Scripts\md-data-table-master\md-data-table.min.css" />
+    <Content Include="Scripts\md-data-table-master\md-data-table.min.js" />
+    <Content Include="TravelBug.UI\BaseFileScript.html" />
+    <Content Include="TravelBug.UI\BaseFileStyle.html" />
+    <Content Include="TravelBug.UI\Controllers\AdminController.js" />
+    <Content Include="TravelBug.UI\Controllers\TestController.js" />
+    <Content Include="TravelBug.UI\Services\AdminTableService.js" />
+    <Content Include="TravelBug.UI\TravelBagApp.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -291,7 +314,8 @@
     <Content Include="Scripts\angular-animate\angular-animate.min.js.map" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
-    <Content Include="Views\Admin\View.cshtml" />
+    <Content Include="Views\Admin\Index_old.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -300,6 +324,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="TravelBug.UI\Directives\" />
     <Folder Include="Views\ShowImage\" />
     <Folder Include="Views\Slider\" />
   </ItemGroup>

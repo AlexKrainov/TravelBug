@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html ng-app="TravelBagApp" lang="en">
+@*ng-app="TravelBagApp">*@
 <head>
     <meta charset="UTF-8">
     <title>@ViewBag.Title - My ASP.NET Application</title>
@@ -18,8 +19,45 @@
     <link rel="stylesheet" href="~/Content/Style/css/style.css" />
     <link rel="stylesheet" href="~/Content/Style/css/style-xlarge.css" />
 
+    <link rel="import" href="~/TravelBug.UI/BaseFileStyle.html">.
+    <link rel="import" href="~/TravelBug.UI/BaseFileScript.html">
+
+    <script>
+        (function () {
+            var version = "1.2.2.0";
+            'use strict';
+            var app = angular.module("TravelBagApp",
+                  [
+                      //"ngMessages",
+                      //"ngSanitize",
+                      //"ngRoute",
+                      //"ngMaterial",
+                      ////"ngFileUpload",
+                      ////"kendo.directives",
+                      ////'vAccordion',
+                      //'ngAnimate',
+                      'md.data.table',
+                      'ngMaterial',
+                      "TravelBagApp.Common",
+                      "TravelBagApp.Services",
+                      "TravelBagApp.Controllers"
+                  ]);
+            angular.module("TravelBagApp.Common", []); //ToDo ??
+            angular.module("TravelBagApp.Services", []);
+            angular.module("TravelBagApp.Controllers", []);
+            app
+                //Для таблицы в админке
+                .config(['$mdThemingProvider', function ($mdThemingProvider) {
+                'use strict';
+
+                $mdThemingProvider.theme('default')
+                  .primaryPalette('blue')
+                  .accentPalette('pink');
+            }]);
+        })();
+    </script>
 </head>
-<body >
+<body>
     <!-- Header -->
     <header id="header">
         <h1><a href="index.html">Transit</a></h1>
@@ -35,9 +73,9 @@
             </ul>
         </nav>
     </header>
-  
+
     @RenderBody()
-  
+
     <!-- Footer -->
     <footer id="footer">
         <div class="container">
@@ -112,5 +150,6 @@
             </div>
         </div>
     </footer>
+    @*<link rel="import" href="~/TravelBug.UI/BaseFileScript.html">*@
 </body>
 </html>

@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Index";
+    this.Layout = "~/Views/Shared/_LayoutCastom.cshtml";
+
+}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<script src="~/Scripts/md-data-table-master/md-data-table.min.js"></script>
+<link href="~/Scripts/md-data-table-master/md-data-table.min.css" rel="stylesheet" />
+
+<script src="~/TravelBug.UI/Services/AdminTableService.js"></script>
+<script src="~/TravelBug.UI/Controllers/AdminController.js"></script>
+
+
+Hello this is new Admin view
+<div ng-controller="AdminCtrl">
+    <h2>{{ message }}</h2>
+
+    <md-content laout="column">
+        @*<md-card>
+                <div layout="row" layout-wrap class="checkboxes">
+                    <md-checkbox ng-model="options.rowSelection">Row Selection</md-checkbox>
+                    <md-checkbox ng-model="options.multiSelect">Multiple Selection</md-checkbox>
+                    <md-checkbox ng-model="options.autoSelect">Auto Selection</md-checkbox>
+                    <md-checkbox ng-model="options.decapitate">Decapitate</md-checkbox>
+                    <md-checkbox ng-model="options.largeEditDialog">Lard Edit Dialogs</md-checkbox>
+                    <md-checkbox ng-model="options.boundaryLinks">Pagination Boundary Links</md-checkbox>
+                    <md-checkbox ng-model="options.limitSelect" ng-click="toggleLimitOptions()">Pagination Limit Select</md-checkbox>
+                    <md-checkbox ng-model="options.pageSelect">Pagination Page Select</md-checkbox>
+                </div>
+            </md-card>*@
+
+
+
+
+        <md-toolbar class="md-table-toolbar md-default" ng-show="!options.rowSelection || !selected.length">
+            <div class="md-toolbar-tools">
+                <span>Nutrition</span>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="loadStuff()">
+                    <md-icon>refresh</md-icon>
+                </md-button>
+                <md-button class="md-icon-button">
+                    <md-icon>filter_list</md-icon>
+                </md-button>
+                <md-button class="md-icon-button">
+                    <md-icon>more_vert</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
+            <div class="md-toolbar-tools">
+                <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
+                <span flex></span>
+                <md-button class="md-icon-button">
+                    <md-icon>delete</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-table-container>
+            <table data-md-table data-md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" data-ng-model="selected" md-progress="promise">
+                <thead ng-if="!options.decapitate" md-head data-md-order="query.order" md-on-reorder="onReorder">
+                    <tr md-row>
+                        <th md-column md:order:by="ID"><span>ID</span></th>
+                        <th md-column md:order:by="Title"><span>Title</span></th>
+                        <th md-column data-md-numeric data-md-order-by="Description" data-md-desc><span>Description</span></th>
+                        <th md-column data-md-numeric data-md-order-by="Time"><span>Time</span></th>
+                        @*<th md-column data-md-numeric data-md-order-by="Name_Language"><span>Name_Language</span></th>
+                            <th md-column data-md-numeric data-md-order-by="Image" data-hide-sm><span>Image (Count)</span></th>*@
+                    </tr>
+                </thead>
+                <tbody md-body>
+                    <tr md-row md-select="dessert" md-select-id="name" data-md-on-select="log" md-on-deselect="deselect" x-md-auto-select="options.autoSelect"
+                        data-ng-repeat="item in desserts | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page - 1) * query.limit">
+                        <td md-cell>{{item.id}}</td>
+                        <td md-cell>{{item.Title}}</td>
+                        <td md-cell>{{item.Description}}</td>
+                        <td md-cell>{{item.Time}}</td>
+                        @*<td md-cell>
+                                <md-select ng-model="dessert.type" placeholder="Other">
+                                    <md-option ng-value="type" ng-repeat="type in getTypes()">{{type}}</md-option>
+                                </md-select>
+                            </td>
+                            <td md-cell>{{dessert.calories.value}}</td>
+                            <td md-cell>{{dessert.fat.value | number: 2}}</td>
+                            <!-- <td md-cell>{{dessert.carbs.value}}</td> -->
+                            <td md-cell>{{dessert.protein.value | number: 2}}</td>
+                            <!-- <td md-cell>{{dessert.sodium.value}}</td> -->
+                            <!-- <td md-cell>{{dessert.calcium.value}}%</td> -->
+                            <td md-cell hide-sm>{{dessert.iron.value}}%</td>
+                            <td md-cell ng-click="editComment($event, dessert)" ng-class="{'md-placeholder': !dessert.comment}">
+                                {{dessert.comment || 'Add a comment'}}
+                            </td>*@
+                    </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+
+        <data-md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{desserts.count}}"
+                                  md-on-paginate="onPaginate" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks"></data-md-table-pagination>
+    </md-content>
+
+</div>
+

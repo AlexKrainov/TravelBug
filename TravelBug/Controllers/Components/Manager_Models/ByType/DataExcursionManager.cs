@@ -13,6 +13,11 @@ namespace TravelBug.Models.Manager
             return db.Excursion.FirstOrDefault(x => x.Id == id);
         }
 
+        internal IQueryable<Excursion> GetExcursionByID()
+        {
+            return db.Excursion.Where(x => x.Id != 0);
+        }
+
         internal int CreateExcursion(Excursion excursion)
         {
             db.Excursion.Add(excursion);
@@ -71,21 +76,21 @@ namespace TravelBug.Models.Manager
                 Excursion excur = db.Excursion.FirstOrDefault(x => x.Id == id);
                 if (excur != null)
                 {
-                   value = value && this.DeleteCostByExcursionID(id);
-                   value = value && this.DeleteLanguageByExcursionID(id);
-                   value = value && this.DeletePhotoByExcursionID(id);
+                    value = value && this.DeleteCostByExcursionID(id);
+                    value = value && this.DeleteLanguageByExcursionID(id);
+                    value = value && this.DeletePhotoByExcursionID(id);
 
-                   if (value)
-                   {
-                       db.Excursion.Remove(excur);
-                       db.SaveChanges();
-                   }
-                   else
-                       return false;
+                    if (value)
+                    {
+                        db.Excursion.Remove(excur);
+                        db.SaveChanges();
+                    }
+                    else
+                        return false;
                 }
                 return true;
             }
-            catch( Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
