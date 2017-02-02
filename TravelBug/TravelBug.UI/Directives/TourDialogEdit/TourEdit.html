@@ -1,0 +1,61 @@
+﻿<md-content class="md-padding" style="width: 800px;" ng-cloak>
+    <ng-form name="myForm.invitation">
+        <!--id-->
+        <md-input-container class="md-block">
+            <label>ID</label>
+            <input ng-model="Card.Id"
+                   name="Id"
+                   readonly>
+        </md-input-container>
+
+        <!--Title-->
+        <md-input-container class="md-block">
+            <label>Tilte</label>
+            <input ng-model="Card.Title"
+                   name="Title">
+        </md-input-container>
+
+        <!--Time-->
+        <md-input-container>
+            <label>Time</label>
+            <md-select name="time"
+                       ng-model="Card.TimeID"
+                       required>
+                <md-option ng-repeat="time in times" value="{{ time.ID }}">{{ time.Option }}</md-option>
+            </md-select>
+            <div class="errors" ng-messages="myForm.invitation.time.$error">
+                <div ng-message="required">Required field</div>
+            </div>
+        </md-input-container>
+
+
+        <!--Cost-->
+        <!--Language-->
+        <fieldset class="standard">
+            <div layout="row">
+                <div  ng-repeat="item in lenguages">
+                    <md-checkbox ng-checked="item.value" ng-click="checkClick(item)">
+                        {{ item.name }}
+                    </md-checkbox>
+                </div>
+            </div>
+        </fieldset>
+        <!--<div flex-gt-sm="50">
+            <md-checkbox md-no-ink
+                         ng-model="myLanguage"
+                         ng-repeat="language in lenguages"
+                         class="md-primary">
+                1{{ language.name }}
+            </md-checkbox>
+        </div>-->
+        <!--Photo-->
+        <!--Description-->
+        <md-input-container class="md-block">
+            <label>Description</label>
+            <textarea ng-model="Card.Description"
+                      name="Employee"
+                      rows="5"></textarea>
+        </md-input-container>
+
+    </ng-form>
+</md-content>

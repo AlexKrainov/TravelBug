@@ -48,6 +48,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -257,6 +261,9 @@
     <Content Include="TravelBug.UI\BaseFileStyle.html" />
     <Content Include="TravelBug.UI\Controllers\AdminController.js" />
     <Content Include="TravelBug.UI\Controllers\TestController.js" />
+    <Content Include="TravelBug.UI\Directives\TourDialogEdit\TourEdit.html" />
+    <Content Include="TravelBug.UI\Directives\TourDialogEdit\TourEditController.js" />
+    <Content Include="TravelBug.UI\Directives\TourDialogEdit\TourEditTabs.html" />
     <Content Include="TravelBug.UI\Services\AdminTableService.js" />
     <Content Include="TravelBug.UI\TravelBagApp.js" />
     <Content Include="Web.config" />
@@ -324,7 +331,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="TravelBug.UI\Directives\" />
     <Folder Include="Views\ShowImage\" />
     <Folder Include="Views\Slider\" />
   </ItemGroup>
@@ -347,6 +353,8 @@
           <DevelopmentServerPort>1608</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:1520/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:1520/Admin/Index</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

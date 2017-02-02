@@ -15,7 +15,8 @@ namespace TravelBug.Models.Manager
 
         internal IQueryable<Excursion> GetExcursionByID()
         {
-            return db.Excursion.Where(x => x.Id != 0);
+            //ToDo: and Delete != false
+            return db.Excursion.Where(x => !string.IsNullOrEmpty(x.Title));
         }
 
         internal int CreateExcursion(Excursion excursion)
@@ -34,33 +35,40 @@ namespace TravelBug.Models.Manager
 
             excursion.Title = _excursion.Title;
             excursion.Description = _excursion.Description;
-            excursion.Time = _excursion.Time != null ? _excursion.Time.TrimEnd(' ') : null;
+            // excursion.Time = _excursion.Time != null ? _excursion.Time.TrimEnd(' ') : null;
+            excursion.TimeID = _excursion.TimeID;
             if (excursion.Id == 0) db.Excursion.Add(excursion);
             db.SaveChanges();
 
 
             #region Update language
-            string[] languages = Name_Language.Split(' ');
-            this.DeleteLanguageByExcursionID(excursion.Id);
-
-            for (int i = 0; i < languages.Count(); i++)
+            if (!string.IsNullOrEmpty(Name_Language))
             {
-                this.CreateLanguage(languages.ElementAt(i), excursion.Id);
+                string[] languages = Name_Language.Split(' ');
+                this.DeleteLanguageByExcursionID(excursion.Id);
+
+                for (int i = 0; i < languages.Count(); i++)
+                {
+                    this.CreateLanguage(languages.ElementAt(i), excursion.Id);
+                }
             }
             #endregion
 
             #region Update cost
-            Cost cost = db.Cost.FirstOrDefault(x => x.ExcursionID == excursion.Id);
-            if (cost != null)
+            if (!string.IsNullOrEmpty(Money))
             {
-                cost.Money = Money;
-            }
-            else
-            {
-                cost = new Cost();
-                cost.ExcursionID = excursion.Id;
-                cost.Money = Money;
-                db.Cost.Add(cost);
+                Cost cost = db.Cost.FirstOrDefault(x => x.ExcursionID == excursion.Id);
+                if (cost != null)
+                {
+                    cost.Money = Money;
+                }
+                else
+                {
+                    cost = new Cost();
+                    cost.ExcursionID = excursion.Id;
+                    cost.Money = Money;
+                    db.Cost.Add(cost);
+                }
             }
             #endregion
 

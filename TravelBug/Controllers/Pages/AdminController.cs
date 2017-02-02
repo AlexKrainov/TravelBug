@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,6 +7,9 @@ using System.Web.Mvc;
 
 namespace TravelBug.Controllers.Pages
 {
+    using Excursion = Models.TravelBugModel.Excursion;
+    using Language = Models.TravelBugModel.Language;
+
     public class AdminController : BaseController
     {
         // GET: Admin
@@ -19,7 +23,6 @@ namespace TravelBug.Controllers.Pages
         [HttpGet]
         public JsonResult GetDataForTable()
         {
-
             var data = manager.GetExcursionByID();
 
             var result = (from m in data
@@ -36,5 +39,81 @@ namespace TravelBug.Controllers.Pages
 
             return Json(result.ToArray(), JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public JsonResult OnCreate()
+        {
+            var excursion = manager.GetExcursionByID(
+                manager.CreateExcursion(new Models.TravelBugModel.Excursion())
+                );
+
+            var result = new
+            {
+                id = excursion.Id,
+                Title = excursion.Title,
+                Description = excursion.Description,
+                TimeID = excursion.TimeID
+            };
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult OnUpdate(Excursion newExcursion)
+        {
+            // var newExcursion = JsonConvert.DeserializeObject<Models.TravelBugModel.Excursion>(data);
+            var result = manager.CreateOrUpdateExcursion(newExcursion, null, null);
+
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult OnEdit(int id)
+        {
+            var excursion = manager.GetExcursionByID(id);
+            Excursion exc = new Excursion
+            {
+                Id = excursion.Id,
+                Title = excursion.Title,
+                Description = excursion.Description,
+                TimeID = excursion.TimeID,
+                Language = excursion.Language.Where(x => x.ID != 0)
+                .Select(x =>
+                new Language
+                {
+                    ID = x.ID,
+                    Name_Language = x.Name_Language,
+                    ExcursionID = x.ExcursionID
+                }).ToArray()
+            };
+
+            //Что бы не было цикличной сериализации
+            JsonSerializerSettings settings =
+                new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
+
+            var tmp = JsonConvert.SerializeObject(exc, settings);
+            return Json(tmp, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult OnDelete(int id)
+        {
+
+            return Json(null, JsonRequestBehavior.AllowGet);
+        }
+
+
+        #region Get collection
+        public JsonResult GetTimes()
+        {
+            var times = manager.GetTime().ToArray();
+
+            var jsonTimes = JsonConvert.SerializeObject(times);
+
+            return Json(jsonTimes, JsonRequestBehavior.AllowGet);
+        }
+
+
+        #endregion
     }
 }

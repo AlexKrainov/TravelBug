@@ -10,24 +10,27 @@
           '$http',
           '$mdEditDialog',
           '$timeout',
-          "AdminTableService"
+          "AdminTableService",
+           "$mdDialog"
     ];
 
-    function AdminCtrl($scope, $q, $http, $mdEditDialog, $timeout, AdminTableService) {
+    function AdminCtrl($scope, $q, $http, $mdEditDialog, $timeout, AdminTableService, $mdDialog) {
 
         $scope.editComment = editComment;
         $scope.toggleLimitOptions = toggleLimitOptions;
         $scope.onPaginate = onPaginate;
-        $scope.getTypes = getTypes;
         $scope.deselect = deselect;
-        $scope.loadStuff = loadStuff;
+        $scope.refresh = refresh;
+        $scope.deleteTour = deleteTour;
+        $scope.showDialog = showDialog;
 
         //#########   Table Field
+        $scope.isReady = false;
         $scope.options = {
             rowSelection: true,
-            multiSelect: true,
-            autoSelect: true,
-            decapitate: false,
+            multiSelect: false,
+            autoSelect: false,
+            //decapitate: false, //header show\hide 
             largeEditDialog: false,
             boundaryLinks: false,
             limitSelect: true,
@@ -38,21 +41,19 @@
         $scope.limitOptions = [5, 10, 15, {
             label: 'All',
             value: function () {
-                return $scope.desserts ? $scope.desserts.count : 0;
+                return $scope.tours ? $scope.tours.count : 0;
             }
         }];
 
         $scope.columns = [{
             name: 'ID',
-            orderBy: 'id',
-            unit: '100g serving'
+            orderBy: 'id'
         }, {
             descendFirst: true,
             name: 'Title',
             orderBy: 'Title'
         }, {
-            name: 'Description',
-            orderBy: 'Description'
+            name: 'Description'
         }];
         //#########   Table Field
 
@@ -61,6 +62,27 @@
 
 
         //###################      Table Method
+
+        function showDialog(event, id) {
+            $mdDialog.show({
+                controller: "DialogController",
+                templateUrl: '../TravelBug.UI/Directives/TourDialogEdit/TourEditTabs.html',
+                //parent: angular.element(document.body),
+                targetEvent: event,
+                clickOutsideToClose: true,
+                fullscreen: false, // Only for -xs, -sm breakpoints.
+                locals: {
+                    ID: id
+                }
+            }).then(function (answer) {
+                if (answer == "Save")
+                    refresh();
+            }, function () {
+                refresh();
+            });
+
+        }
+
         function editComment() {
             event.stopPropagation();
 
@@ -91,12 +113,23 @@
             });
         }
 
+        function deleteTour() {
+            if ($scope.selected && $scope.selected.length != 0) {
+                if (confirm("Вы уверены, что хотите удалить этот " + $scope.selected[0].Title + "?")) {
+
+                    var promises = [];
+                    promises.push(AdminTableService.onDelete($scope.selected[0].id));
+                    $q.all(promises).then(function (results) {
+                        refresh();
+                    });
+                }
+
+            }
+
+        }
+
         function toggleLimitOptions() {
             $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
-        };
-
-        function getTypes() {
-            return ['Candy', 'Ice cream', 'Other', 'Pastry'];
         };
 
         function onPaginate(page, limit) {
@@ -109,14 +142,20 @@
         };
 
         function deselect(item) {
-            console.log(item.name, 'was deselected');
+            console.log(item, 'was deselected');
         };
 
 
-        function loadStuff() {
+        function refresh() {
             $scope.promise = $timeout(function () {
+                var promises = [];
+                promises.push(AdminTableService.getDataForTable());                                 //0
 
-            }, 2000);
+                $q.all(promises).then(function (results) {
+                    $scope.tours = results[0].data;
+                    $scope.isReady = true;
+                });
+            }, 1000);
         };
 
         function onReorder(order) {
@@ -135,25 +174,9 @@
         activate();
 
         function activate() {
-          //  var data = AdminTableService.getDataForTable();
+            refresh();
 
-            var promises = [];
-            promises.push(AdminTableService.getDataForTable());                                 //0
 
-            $q.all(promises).then(function (results) {
-                $scope.desserts = results[0];
-
-            });
-            // var currentItem = dictionaryService.getCurrentItem(
-            //agreementService.toJSON($scope.Card, currentItemId, "/Lists/StandardContract/", true)
-            //);
-
-            // var promises = [];
-            // promises.push(currentItem);                                 //0
-
-            // $q.all(promises).then(function (results) {
-            //     $scope.Card = results[0];
-            // });
         }
     }
 })();

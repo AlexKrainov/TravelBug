@@ -10,7 +10,7 @@
 
 <script src="~/TravelBug.UI/Services/AdminTableService.js"></script>
 <script src="~/TravelBug.UI/Controllers/AdminController.js"></script>
-
+<script src="~/TravelBug.UI/Directives/TourDialogEdit/TourEditController.js"></script>
 
 Hello this is new Admin view
 <div ng-controller="AdminCtrl">
@@ -37,7 +37,10 @@ Hello this is new Admin view
             <div class="md-toolbar-tools">
                 <span>Nutrition</span>
                 <span flex></span>
-                <md-button class="md-icon-button" ng-click="loadStuff()">
+                <md-button class="md-icon-button" ng-click="showDialog($event, 0)">
+                    <md-icon>add</md-icon>
+                </md-button>
+                <md-button class="md-icon-button" ng-click="refresh()">
                     <md-icon>refresh</md-icon>
                 </md-button>
                 <md-button class="md-icon-button">
@@ -53,7 +56,7 @@ Hello this is new Admin view
             <div class="md-toolbar-tools">
                 <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
                 <span flex></span>
-                <md-button class="md-icon-button">
+                <md-button class="md-icon-button" ng-dblclick="deleteTour()">
                     <md-icon>delete</md-icon>
                 </md-button>
             </div>
@@ -61,7 +64,7 @@ Hello this is new Admin view
 
         <md-table-container>
             <table data-md-table data-md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" data-ng-model="selected" md-progress="promise">
-                <thead ng-if="!options.decapitate" md-head data-md-order="query.order" md-on-reorder="onReorder">
+                <thead md-head data-md-order="query.order" md-on-reorder="onReorder">
                     <tr md-row>
                         <th md-column md:order:by="ID"><span>ID</span></th>
                         <th md-column md:order:by="Title"><span>Title</span></th>
@@ -72,8 +75,9 @@ Hello this is new Admin view
                     </tr>
                 </thead>
                 <tbody md-body>
-                    <tr md-row md-select="dessert" md-select-id="name" data-md-on-select="log" md-on-deselect="deselect" x-md-auto-select="options.autoSelect"
-                        data-ng-repeat="item in desserts | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page - 1) * query.limit">
+                    <tr md-row md-select="item" md-select-id="id" md-on-deselect="deselect"
+                        x-md-auto-select="options.autoSelect" ng-click="showDialog($event, item.id)"
+                        data-ng-repeat="item in tours | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page - 1) * query.limit">
                         <td md-cell>{{item.id}}</td>
                         <td md-cell>{{item.Title}}</td>
                         <td md-cell>{{item.Description}}</td>
@@ -98,7 +102,7 @@ Hello this is new Admin view
             </table>
         </md-table-container>
 
-        <data-md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{desserts.count}}"
+        <data-md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{tours.count}}"
                                   md-on-paginate="onPaginate" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks"></data-md-table-pagination>
     </md-content>
 

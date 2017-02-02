@@ -28,14 +28,14 @@
             'use strict';
             var app = angular.module("TravelBagApp",
                   [
-                      //"ngMessages",
-                      //"ngSanitize",
-                      //"ngRoute",
-                      //"ngMaterial",
+                      "ngMessages",
+                      "ngSanitize",
+                      "ngRoute",
+                      "ngMaterial",
                       ////"ngFileUpload",
                       ////"kendo.directives",
                       ////'vAccordion',
-                      //'ngAnimate',
+                      'ngAnimate',
                       'md.data.table',
                       'ngMaterial',
                       "TravelBagApp.Common",
@@ -48,12 +48,12 @@
             app
                 //Для таблицы в админке
                 .config(['$mdThemingProvider', function ($mdThemingProvider) {
-                'use strict';
+                    'use strict';
 
-                $mdThemingProvider.theme('default')
-                  .primaryPalette('blue')
-                  .accentPalette('pink');
-            }]);
+                    $mdThemingProvider.theme('default')
+                      .primaryPalette('blue')
+                      .accentPalette('pink');
+                }]);
         })();
     </script>
 </head>
