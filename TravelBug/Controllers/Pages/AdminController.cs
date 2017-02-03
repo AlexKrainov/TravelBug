@@ -58,11 +58,17 @@ namespace TravelBug.Controllers.Pages
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newExcursion"></param>
+        /// <param name="Name_Language"> в формате: 'Russian France '</param>
+        /// <returns></returns>
         [HttpPost]
-        public JsonResult OnUpdate(Excursion newExcursion)
+        public JsonResult OnUpdate(Excursion newExcursion, string Name_Language, HttpPostedFileBase[] Pictures)
         {
             // var newExcursion = JsonConvert.DeserializeObject<Models.TravelBugModel.Excursion>(data);
-            var result = manager.CreateOrUpdateExcursion(newExcursion, null, null);
+            var result = manager.CreateOrUpdateExcursion(newExcursion, Name_Language, null);
 
             return Json(true, JsonRequestBehavior.AllowGet);
         }

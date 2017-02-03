@@ -19,8 +19,7 @@
         <md-input-container>
             <label>Time</label>
             <md-select name="time"
-                       ng-model="Card.TimeID"
-                       required>
+                       ng-model="Card.TimeID">
                 <md-option ng-repeat="time in times" value="{{ time.ID }}">{{ time.Option }}</md-option>
             </md-select>
             <div class="errors" ng-messages="myForm.invitation.time.$error">
@@ -33,7 +32,7 @@
         <!--Language-->
         <fieldset class="standard">
             <div layout="row">
-                <div  ng-repeat="item in lenguages">
+                <div ng-repeat="item in languages">
                     <md-checkbox ng-checked="item.value" ng-click="checkClick(item)">
                         {{ item.name }}
                     </md-checkbox>
@@ -43,12 +42,14 @@
         <!--<div flex-gt-sm="50">
             <md-checkbox md-no-ink
                          ng-model="myLanguage"
-                         ng-repeat="language in lenguages"
+                         ng-repeat="language in languages"
                          class="md-primary">
                 1{{ language.name }}
             </md-checkbox>
         </div>-->
         <!--Photo-->
+        <div id="NewPlaceImage"></div>
+
         <!--Description-->
         <md-input-container class="md-block">
             <label>Description</label>

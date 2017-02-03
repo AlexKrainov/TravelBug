@@ -91,3 +91,5 @@ C:\Users\akraynov\Source\Repos\TravelBug\TravelBug\bin\ru\EntityFramework.SqlSer
 C:\Users\Alex\Source\Repos\TravelBug\TravelBug\bin\ru\EntityFramework.SqlServer.resources.dll
 C:\Users\Alex\Source\Repos\TravelBug\TravelBug\bin\Newtonsoft.Json.dll
 C:\Users\Alex\Source\Repos\TravelBug\TravelBug\bin\Newtonsoft.Json.xml
+C:\Users\akraynov\Source\Repos\TravelBug\TravelBug\bin\Newtonsoft.Json.dll
+C:\Users\akraynov\Source\Repos\TravelBug\TravelBug\bin\Newtonsoft.Json.xml

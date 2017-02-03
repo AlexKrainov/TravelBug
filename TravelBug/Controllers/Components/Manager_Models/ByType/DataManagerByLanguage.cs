@@ -45,6 +45,19 @@ namespace TravelBug.Models.Manager
             }
 
         }
+        internal void CreateArrayLanguage(string Name_Language, int excursionID)
+        {
+            if (!string.IsNullOrEmpty(Name_Language))
+            {
+                string[] languages = Name_Language.Split(' ');
+                this.DeleteLanguageByExcursionID(excursionID);
+
+                for (int i = 0; i < languages.Count(); i++)
+                {
+                    this.CreateLanguage(languages.ElementAt(i), excursionID);
+                }
+            }
+        }
 
         internal bool DeleteLanguageByExcursionID(int excursionID)
         {

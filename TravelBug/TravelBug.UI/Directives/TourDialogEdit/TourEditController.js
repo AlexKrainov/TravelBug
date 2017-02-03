@@ -16,7 +16,7 @@
 
         $scope.myForm = {};
         $scope.Card = null;
-        $scope.lenguages = [
+        $scope.languages = [
             { name: "Russian", value: false },
             { name: "English", value: false },
             { name: "France", value: false }
@@ -41,11 +41,12 @@
                 $scope.isReady = false;
                 var promises = [];
 
-                promises.push(AdminTableService.onUpdate(cardToJSON()));
 
-                $q.all(promises).then(function (results) {
-                    //$scope.isReady = true;
+                AdminTableService.onUpdate(cardToJSON(), languagesToJSON())
+                .then(function () {
+
                     closeDialog();
+
                 });
             }
 
@@ -59,6 +60,15 @@
                 "TimeID": $scope.Card.TimeID
             };
             return JSON.stringify(sendItem);
+        }
+
+        function languagesToJSON() {
+            var langValue = "";
+            for (var i = 0; i < $scope.languages.length; i++) {
+                if ($scope.languages[i].value) langValue = langValue + " " + $scope.languages[i].name;
+            }
+
+            return langValue;
         }
 
         function closeDialog() {
@@ -84,12 +94,14 @@
 
                 var lang = $scope.Card.Language;
                 for (var i = 0; i < lang.length; i++) {
-                    for (var j = 0; j < $scope.lenguages.length; j++) {
-                        if ($scope.lenguages[j].name == lang[i].Name_Language) {
-                            $scope.lenguages[j].value = true;
+                    for (var j = 0; j < $scope.languages.length; j++) {
+                        if ($scope.languages[j].name == lang[i].Name_Language) {
+                            $scope.languages[j].value = true;
                         }
                     }
                 }
+
+                initFileUpload();
 
                 $scope.isReady = true;
             });
@@ -98,5 +110,11 @@
 
         activate();
 
+        function initFileUpload() {
+            var oldPlace = $("#AddImage");
+            var newPlace = $("#NewPlaceImage");
+
+            oldPlace.append(newPlace);
+        }
     }
 })();

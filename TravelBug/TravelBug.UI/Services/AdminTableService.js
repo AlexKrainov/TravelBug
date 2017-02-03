@@ -14,7 +14,8 @@
             onCreate: onCreate,
             onUpdate: onUpdate,
             onEdit: onEdit,
-            getTimes: getTimes
+            getTimes: getTimes,
+          //  onSaveLanguage: onSaveLanguage
         };
 
         return service;
@@ -43,8 +44,8 @@
                      });
         }
 
-        function onUpdate(jsonValue) {
-            return $http.post('/Admin/OnUpdate', jsonValue)
+        function onUpdate(jsonValue, valueLang) {
+            return $http.post('/Admin/OnUpdate?Name_Language=' + valueLang, jsonValue)
                     .success(function (data, status, headers, config) {
                         return data;
                     });
@@ -63,5 +64,12 @@
              return data;
          });
         }
+
+        //function onSaveLanguage(valueLang) {
+        //    return $http.post('/Admin/OnSaveLanguage', valueLang)
+        //          .success(function (data, status, headers, config) {
+        //              return data;
+        //          });
+        //}
     }
 })();
