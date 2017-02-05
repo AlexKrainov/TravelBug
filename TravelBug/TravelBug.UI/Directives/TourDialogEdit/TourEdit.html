@@ -1,5 +1,5 @@
 ﻿<md-content class="md-padding" style="width: 800px;" ng-cloak>
-    <ng-form name="myForm.invitation">
+    <form name="myForm.invitation" enctype="multipart/form-data" action="/Admin/OnUpdate">
         <!--id-->
         <md-input-container class="md-block">
             <label>ID</label>
@@ -39,17 +39,9 @@
                 </div>
             </div>
         </fieldset>
-        <!--<div flex-gt-sm="50">
-            <md-checkbox md-no-ink
-                         ng-model="myLanguage"
-                         ng-repeat="language in languages"
-                         class="md-primary">
-                1{{ language.name }}
-            </md-checkbox>
-        </div>-->
-        <!--Photo-->
-        <div id="NewPlaceImage"></div>
 
+        <!--Photo-->
+        <!--<div id="NewPlaceImage"></div>-->
         <!--Description-->
         <md-input-container class="md-block">
             <label>Description</label>
@@ -58,5 +50,6 @@
                       rows="5"></textarea>
         </md-input-container>
 
-    </ng-form>
+    </form>
+    
 </md-content>

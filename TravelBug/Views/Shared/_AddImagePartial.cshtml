@@ -1,0 +1,16 @@
+﻿
+<div class="container">
+    @*,  Url = "Create/CreateAjax?tourID=4"*@
+    @*@using (Ajax.BeginForm("CreateAjax", "Admin", null, new AjaxOptions { HttpMethod = "POST" }, new { enctype = "multipart/form-data" }))
+    {
+       
+    }*@
+    <section id="AddImage">
+        @Html.Partial("AddImagePartial")
+    </section>
+
+    <div class="">
+        <input type="submit" value="Go to create" class="button" />
+    </div>
+
+</div>

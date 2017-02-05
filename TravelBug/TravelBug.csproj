@@ -264,6 +264,7 @@
     <Content Include="TravelBug.UI\Directives\TourDialogEdit\TourEdit.html" />
     <Content Include="TravelBug.UI\Directives\TourDialogEdit\TourEditController.js" />
     <Content Include="TravelBug.UI\Directives\TourDialogEdit\TourEditTabs.html" />
+    <Content Include="TravelBug.UI\Directives\TourDialogEdit\TourEdit_LoadImages.html" />
     <Content Include="TravelBug.UI\Services\AdminTableService.js" />
     <Content Include="TravelBug.UI\TravelBagApp.js" />
     <Content Include="Web.config" />
@@ -323,6 +324,7 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\Admin\Index_old.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\_AddImagePartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

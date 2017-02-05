@@ -15,10 +15,20 @@
             onUpdate: onUpdate,
             onEdit: onEdit,
             getTimes: getTimes,
-          //  onSaveLanguage: onSaveLanguage
+            //  onSaveLanguage: onSaveLanguage
+            onPhoto: onPhoto
         };
 
         return service;
+
+        function onPhoto(formData) {
+            $http.post("/Admin/SaveFile", formData, {
+                withCredentials: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity
+            }).success(function (response) {
+            });
+        }
 
         function getDataForTable() {
             return $http.get('/Admin/GetDataForTable')

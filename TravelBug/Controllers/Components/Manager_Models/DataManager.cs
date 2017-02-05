@@ -32,6 +32,11 @@ namespace TravelBug.Models.Manager
             return db.Photo;
         }
 
+        public IQueryable<Photo> GetPhotoByExcursionID(int excursionID)
+        {
+            return db.Photo.Where(x => x.ExcursionID == excursionID && x.Delete != true);
+        }
+
         public Photo GetMainPhotoByExcursionID(int excursionID)
         {
             //return db.Photo.FirstOrDefault(x => x.ExcursionID == excursionID && x.ToMine);

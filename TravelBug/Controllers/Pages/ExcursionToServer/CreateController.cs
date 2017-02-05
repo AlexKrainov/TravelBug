@@ -31,5 +31,6 @@ namespace TravelBug.Controllers.Pages.ExcursionToServer
 
             return RedirectToAction("AdminPage", "Excursion");
         }
+
     }
 }

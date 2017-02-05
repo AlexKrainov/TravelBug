@@ -9,10 +9,11 @@
             "$q",
             "$mdDialog",
             "ID",
-            "AdminTableService"
+            "AdminTableService",
+            "$http"
     ];
 
-    function DialogController($scope, $q, $mdDialog, ID, AdminTableService) {
+    function DialogController($scope, $q, $mdDialog, ID, AdminTableService, $http) {
 
         $scope.myForm = {};
         $scope.Card = null;
@@ -23,35 +24,94 @@
         ];
 
         //###############    Methods
-        $scope.Update = Update;
+        $scope.SaveAs = SaveAs;
         $scope.closeDialog = closeDialog;
         $scope.checkClick = checkClick;
+        $scope.getTheFiles = getTheFiles;
+        $scope.loadFile = loadFile;
 
         //#################    Methods
+
+        function getTheFiles($files) {
+            var formdata = new FormData();
+            angular.forEach($files, function (value, key) {
+                formdata.append(key, value);
+            });
+        }
 
         function checkClick(language, selected) {
             if ($scope.isReady) {
                 language.value = !language.value;
-
             }
         }
 
-        function Update() {
+        function SaveAs(draft) {
             if ($scope.myForm.invitation.$valid) {
+
                 $scope.isReady = false;
-                var promises = [];
 
+                var fileUpload = $("#Pictures").get(0);
+                var files = fileUpload.files;
 
-                AdminTableService.onUpdate(cardToJSON(), languagesToJSON())
-                .then(function () {
+                if (files.length == 0) {
+                    saveWithoutImages(draft);
+                }
 
-                    closeDialog();
+                // Checking whether FormData is available in browser
+                if (window.FormData !== undefined) {
 
-                });
+                    // Create FormData object
+                    var fileData = new FormData();
+
+                    // Looping over all files and add it to FormData object
+                    for (var i = 0; i < files.length; i++) {
+                        fileData.append(files[i].name, files[i]);
+                    }
+
+                    // Adding one more key to FormData object
+                    fileData.append('username', 'Manas');//??
+
+                    $.ajax({
+                        url: '/Admin/UploadFiles/' + $scope.Card.Id,
+                        type: "POST",
+                        contentType: false, // Not to set any content header
+                        processData: false, // Not to process data
+                        data: fileData,
+                        success: function (result) {
+                            saveWithoutImages(draft)
+                        },
+                        error: function (err) {
+                            alert(err.statusText);
+                        }
+                    });
+                } else {
+                    if (confirm("Не удается сохранить файлы. Продолжить сохранение без них ?"))
+                        saveWithoutImages(draft);
+                }
             }
+        }
+
+        function saveWithoutImages(draft) {
+            AdminTableService.onUpdate(cardToJSON(), languagesToJSON())
+                .then(function () {
+                    if (!draft) {
+                        closeDialog();
+                    } else {
+                        $scope.isReady = true;
+                    }
+                });
+        }
+
+        function loadFile() {
+
+            return $http.get('/Admin/getFiles/' + $scope.Card.Id)
+                     .success(function (data, status, headers, config) {
+                         $scope.images = JSON.parse(data);
+                     });
 
         }
 
+        //Format json [ key: "value" ]
         function cardToJSON() {
             var sendItem = {
                 "Id": $scope.Card.Id,
@@ -62,6 +122,7 @@
             return JSON.stringify(sendItem);
         }
 
+        //Format "English Russian "
         function languagesToJSON() {
             var langValue = "";
             for (var i = 0; i < $scope.languages.length; i++) {
@@ -113,8 +174,8 @@
         function initFileUpload() {
             var oldPlace = $("#AddImage");
             var newPlace = $("#NewPlaceImage");
+            newPlace.append(oldPlace);
 
-            oldPlace.append(newPlace);
         }
     }
 })();
