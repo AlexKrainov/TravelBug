@@ -1,8 +1,6 @@
-﻿<section id="EditImage">
+﻿<!--<section id="EditImage">
     <input type="hidden" id="ExcursionID" value="{{ Card.Id }}" />
     <input type="hidden" id="ImagesRemoveArray" />
-    <!--@Html.Hidden("ExcursionID", Model.Id);-->
-    <!--@Html.Hidden("ImagesRemoveArray");-->
     <div>
         <header>
             <h2>Album</h2>
@@ -14,11 +12,10 @@
                 <div>
                     <img ng-repeat="image in images" class="edit_img" id="{{ image.ID }}" ng-src="data:{{image.ContentType}};base64,{{image.Image}}" alt="{{ image.FileName }}" />
                 </div>
-                <!--<span class="btn btn-default RemoveImage_button" onclick="JsonRemoveImages();">Remove image</span>-->
             </div>
         </div>
     </div>
-</section>
+</section>-->
 
 
 <div class="file-input-wrapper">
@@ -65,49 +62,5 @@
     }
 
 
-    // EditTour Remove Picture
-    function SelectPicture(o) {
-        if ($(o).css("opacity") == "1") {
-            $(o).css("opacity", ".4");
-        } else {
-            $(o).css("opacity", "1");
-        }
-        AddHiddenID();
-    }
-
-    function AddHiddenID() {
-        var array = "";
-        $(".image").each(function () {
-            if ($(this).css("opacity") != "1") {
-                array += $(this).attr("id") + ",";
-            }
-        });
-
-        $("#PictureArray").val(array);
-
-        if ($("#PictureArray").val().length != 0) {
-            $("#RemoveBtn").removeClass("disabled");
-            $("#DeletePicture").text("");
-        }
-        else
-            $("#RemoveBtn").addClass("disabled");
-    }
-
-    function RemovePicture(o) {
-        if ($("#PictureArray").val().length == 0) {
-            $(o).addClass("disabled");
-            $("#DeletePicture").text("Please, select images for delete.");
-            return false;
-        } else {
-            $(o).removeClass("disabled");
-            $("#DeletePicture").text("");
-            return true;
-        }
-        return false;
-    }
-
-    function LoadImages() {
-        $("#Pictures").click();
-    }
-    // End Remove Picutre
+   
 </script>

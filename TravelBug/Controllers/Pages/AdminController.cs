@@ -172,7 +172,19 @@ namespace TravelBug.Controllers.Pages
                     ID = x.ID,
                     Name_Language = x.Name_Language,
                     ExcursionID = x.ExcursionID
-                }).ToArray()
+                }).ToArray(),
+                Photo = excursion.Photo.Where(x => x.Delete != true).Select(x =>
+               new Photo
+               {
+                   ID = x.ID,
+                   ExcursionID = x.ExcursionID,
+                   FileName = x.FileName,
+                   ContentType = x.ContentType,
+                   ToMine = x.ToMine,
+                   Image = x.Image,
+                   Delete = x.Delete
+               }).ToArray()
+
             };
 
             //Что бы не было цикличной сериализации

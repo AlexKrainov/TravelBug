@@ -265,6 +265,7 @@
     <Content Include="TravelBug.UI\Directives\TourDialogEdit\TourEditController.js" />
     <Content Include="TravelBug.UI\Directives\TourDialogEdit\TourEditTabs.html" />
     <Content Include="TravelBug.UI\Directives\TourDialogEdit\TourEdit_LoadImages.html" />
+    <Content Include="TravelBug.UI\Directives\TourDialogEdit\TourEdit_RemoveImages.html" />
     <Content Include="TravelBug.UI\Services\AdminTableService.js" />
     <Content Include="TravelBug.UI\TravelBagApp.js" />
     <Content Include="Web.config" />

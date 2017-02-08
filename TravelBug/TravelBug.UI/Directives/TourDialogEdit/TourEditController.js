@@ -145,7 +145,7 @@
                 promises.push(AdminTableService.onEdit(ID));
             }
             promises.push(AdminTableService.getTimes());        //1
-            //promises.push(AdminTableService.getMoney);
+            //promises.push(AdminTableService.);               //2
             //promises.push(AdminTableService.getLanguage);
 
             $q.all(promises).then(function (results) {
