@@ -22,6 +22,7 @@
             { name: "English", value: false },
             { name: "France", value: false }
         ];
+        $scope.images = [];
 
         //###############    Methods
         $scope.SaveAs = SaveAs;
@@ -106,7 +107,10 @@
 
             return $http.get('/Admin/getFiles/' + $scope.Card.Id)
                      .success(function (data, status, headers, config) {
-                         $scope.images = JSON.parse(data);
+                         var data = JSON.parse(data);
+                         for (var i = 0; i < data.length; i++) {
+                             $scope.images.push({ image: data[i], hide: data[i].Delete, _delete: false });
+                         }
                      });
 
         }

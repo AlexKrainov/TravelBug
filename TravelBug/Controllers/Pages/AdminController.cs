@@ -141,7 +141,8 @@ namespace TravelBug.Controllers.Pages
                     ContentType = files[i].ContentType,
                     ID = files[i].ID,
                     Image = files[i].Image,
-                    FileName = files[i].FileName
+                    FileName = files[i].FileName,
+                    Delete = files[i].Delete
                 };
                 photos.Add(photo);
             }

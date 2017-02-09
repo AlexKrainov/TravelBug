@@ -34,7 +34,7 @@ namespace TravelBug.Models.Manager
 
         public IQueryable<Photo> GetPhotoByExcursionID(int excursionID)
         {
-            return db.Photo.Where(x => x.ExcursionID == excursionID && x.Delete != true);
+            return db.Photo.Where(x => x.ExcursionID == excursionID);// && x.Delete != true);
         }
 
         public Photo GetMainPhotoByExcursionID(int excursionID)

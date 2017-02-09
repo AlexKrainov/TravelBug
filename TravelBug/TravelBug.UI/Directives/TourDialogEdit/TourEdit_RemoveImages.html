@@ -18,6 +18,54 @@
     </div>
 </section>
 
+<md-list layout-padding>
+    <md-list-item class="md-3-line" ng-repeat="image in images">
+        <img ng-src="data:{{image.image.ContentType}};base64,{{image.image.Image}}" class="md-avatar" alt="{{ image.image.FileName }}">
+        <div class="md-list-item-text">
+            <fieldset class="demo-fieldset">
+                <div layout="row" layout-wrap flex>
+                    <div class="demo-select-all-checkboxes" flex="100" ng-model="image">
+                        <md-checkbox ng-checked="image.hide">
+                            Hide
+                        </md-checkbox>
+                        <md-checkbox ng-checked="image._delete">
+                            Delete
+                        </md-checkbox>
+                    </div>
+                </div>
+            </fieldset>
+            <!--<md-radio-group ng-model="image">
+                <md-radio-button ng-value="image.hide">hide</md-radio-button>
+                <md-radio-button ng-value="image._delete"> Delete </md-radio-button>
+
+            </md-radio-group>-->
+        </div>
+    </md-list-item>
+</md-list>
+
+<!--<section>
+    <div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Hide</th>
+                <th>Delete</th>
+            </tr>
+            <tr ng-repeat="image in images">
+                <td>{{ image.image.ID }}</td>
+                <td>
+                    <img class="edit_img" style="width: 300px;height: 200px;"
+                         id="{{ image.image.ID }}" ng-src="data:{{image.image.ContentType}};base64,{{image.image.Image}}"
+                         alt="{{ image.FileName }}" />
+                </td>
+                <td>{{ image.hide }}</td>
+                <td>{{ image._delete }}</td>
+            </tr>
+        </table>
+    </div>
+</section>-->
+
 <script>
     // EditTour Remove Picture
     function SelectPicture(o) {
