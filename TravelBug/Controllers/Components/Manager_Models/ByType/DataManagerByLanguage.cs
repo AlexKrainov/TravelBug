@@ -100,5 +100,26 @@ namespace TravelBug.Models.Manager
             }
             return true;
         }
+
+        internal void CreateOrUpdateLanguage(ICollection<Language> language, int excursionID)
+        {
+            try
+            {
+                this.DeleteLanguageByExcursionID(excursionID);
+
+                for (int i = 0; i < language.Count(); i++)
+                {
+                    language.ElementAt(i).ExcursionID = excursionID;
+                }
+                db.Language.AddRange(language);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+
+        }
     }
 }

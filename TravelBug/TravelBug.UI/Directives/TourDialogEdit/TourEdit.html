@@ -1,44 +1,66 @@
 ﻿<md-content class="md-padding" style="width: 800px;" ng-cloak>
-    <form name="myForm.invitation" enctype="multipart/form-data" action="/Admin/OnUpdate">
+    <form name="myForm.invitation">
         <!--id-->
-        <md-input-container class="md-block">
+        <!--<md-input-container class="md-block">
             <label>ID</label>
             <input ng-model="Card.Id"
                    name="Id"
                    readonly>
-        </md-input-container>
-
+        </md-input-container-->
         <!--Title-->
         <md-input-container class="md-block">
             <label>Tilte</label>
             <input ng-model="Card.Title"
-                   name="Title">
+                   name="Title"
+                   required>
         </md-input-container>
 
-        <!--Time-->
-        <md-input-container>
-            <label>Time</label>
-            <md-select name="time"
-                       ng-model="Card.TimeID">
-                <md-option ng-repeat="time in times" value="{{ time.ID }}">{{ time.Option }}</md-option>
-            </md-select>
-            <div class="errors" ng-messages="myForm.invitation.time.$error">
-                <div ng-message="required">Required field</div>
-            </div>
-        </md-input-container>
-
-
-        <!--Cost-->
-        <!--Language-->
-        <fieldset class="standard">
-            <div layout="row">
-                <div ng-repeat="item in languages">
-                    <md-checkbox ng-checked="item.value" ng-click="checkClick(item)">
-                        {{ item.name }}
-                    </md-checkbox>
+        <div layout="row">
+            <!--Time-->
+            <md-input-container flex="33">
+                <label>Time</label>
+                <md-select name="time"
+                           ng-model="Card.TimeID">
+                    <md-option ng-repeat="time in times" value="{{ time.ID }}">{{ time.Option }}</md-option>
+                </md-select>
+                <div class="errors" ng-messages="myForm.invitation.time.$error">
+                    <div ng-message="required">Required field</div>
                 </div>
-            </div>
-        </fieldset>
+            </md-input-container>
+
+            <!--Cost-->
+
+            <md-input-container class="md-block" flex="25">
+                <label>Money         or</label>
+                <input required
+                       ng-model="Card.Cost"
+                       placeholder="Input money ... ">
+            </md-input-container>
+            <label></label>
+            <md-input-container class="md-block" flex="25">
+                <label>select </label>
+                <md-select ng-model="Card.Cost">
+                    <md-option ng-repeat="cost in costs" ng-value="cost.Money">
+                        {{ cost.Money }}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+
+        <!--Language-->
+        <md-input-container class="md-block">
+            <label>Language : </label>
+            <br />
+            <fieldset class="standard">
+                <div layout="row">
+                    <div class="demo-select-all-checkboxes" flex="100" ng-repeat="item in languages">
+                        <md-checkbox ng-checked="item.value" ng-click="checkClick(item)">
+                            {{ item.name }}
+                        </md-checkbox>
+                    </div>
+                </div>
+            </fieldset>
+        </md-input-container>
 
         <!--Photo-->
         <!--<div id="NewPlaceImage"></div>-->
@@ -50,6 +72,7 @@
                       rows="5"></textarea>
         </md-input-container>
 
+
     </form>
-    
+
 </md-content>

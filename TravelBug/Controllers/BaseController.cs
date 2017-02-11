@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TravelBug.Controllers.Pages.ExcursionToServer;
+using TravelBug.Controllers;
 using TravelBug.Models.Manager;
 using TravelBug.Models.TravelBugModel;
 

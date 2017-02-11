@@ -274,15 +274,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Components\PhotoBase.cs" />
-    <Compile Include="Controllers\Elements\ExcursionsController.cs" />
     <Compile Include="Controllers\Components\CompressionImage.cs" />
     <Compile Include="Controllers\Elements\SliderController.cs" />
     <Compile Include="Controllers\Pages\AdminController.cs" />
     <Compile Include="Controllers\Pages\ExcursionController.cs" />
-    <Compile Include="Controllers\Pages\ExcursionToServer\DropDownListEditController.cs" />
-    <Compile Include="Controllers\Pages\ExcursionToServer\EditExcursionController.cs" />
     <Compile Include="Controllers\Pages\ExcursionToServer\ShowImageController.cs" />
-    <Compile Include="Controllers\Pages\ExcursionToServer\CreateController.cs" />
     <Compile Include="Controllers\Pages\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -293,6 +289,7 @@
     <Compile Include="Controllers\Components\Manager_Models\ByType\DataManagerByCost.cs" />
     <Compile Include="Controllers\Components\Manager_Models\ByType\DataManagerByLanguage.cs" />
     <Compile Include="Controllers\Components\Manager_Models\DataManager.cs" />
+    <Compile Include="Models\Model\RemoveFiles.cs" />
     <Compile Include="Models\TravelBugModel\Cost.cs" />
     <Compile Include="Models\TravelBugModel\Excursion.cs" />
     <Compile Include="Models\TravelBugModel\Language.cs" />
@@ -308,11 +305,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Content\Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Home.cshtml" />
-    <Content Include="Views\Excursions\AdminPage.cshtml" />
-    <Content Include="Views\Create\Excursion.cshtml" />
-    <Content Include="Views\EditExcursion\Index.cshtml" />
-    <Content Include="Views\DropDownListEdit\Item.cshtml" />
-    <Content Include="Views\Shared\AddImagePartial.cshtml" />
+    <Content Include="Views\Shared\_old_AddImagePartial.cshtml" />
     <Content Include="Views\Partials\ExursionsPartialView.cshtml" />
     <Content Include="Views\Excursion\View.cshtml" />
     <Content Include="Views\Partials\SliderPartial.cshtml" />
@@ -325,7 +318,6 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\Admin\Index_old.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Shared\_AddImagePartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -333,10 +325,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\ShowImage\" />
-    <Folder Include="Views\Slider\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

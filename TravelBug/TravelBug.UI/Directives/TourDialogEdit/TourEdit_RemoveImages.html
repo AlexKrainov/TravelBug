@@ -1,49 +1,4 @@
-﻿<section id="EditImage">
-    <input type="hidden" id="ExcursionID" value="{{ Card.Id }}" />
-    <input type="hidden" id="ImagesRemoveArray" />
-    <div>
-        <header>
-            <h2>Album</h2>
-            <p>Select the pictures to delete</p>
-        </header>
-        <div>
-            <div>
-                <input type="button" value="load file" ng-click="loadFile()" />
-                <div>
-                    <img ng-repeat="image in images" class="edit_img" id="{{ image.ID }}" ng-src="data:{{image.ContentType}};base64,{{image.Image}}" alt="{{ image.FileName }}" />
-                </div>
-                <!--<span class="btn btn-default RemoveImage_button" onclick="JsonRemoveImages();">Remove image</span>-->
-            </div>
-        </div>
-    </div>
-</section>
-
-<md-list layout-padding>
-    <md-list-item class="md-3-line" ng-repeat="image in images">
-        <img ng-src="data:{{image.image.ContentType}};base64,{{image.image.Image}}" class="md-avatar" alt="{{ image.image.FileName }}">
-        <div class="md-list-item-text">
-            <fieldset class="demo-fieldset">
-                <div layout="row" layout-wrap flex>
-                    <div class="demo-select-all-checkboxes" flex="100" ng-model="image">
-                        <md-checkbox ng-checked="image.hide">
-                            Hide
-                        </md-checkbox>
-                        <md-checkbox ng-checked="image._delete">
-                            Delete
-                        </md-checkbox>
-                    </div>
-                </div>
-            </fieldset>
-            <!--<md-radio-group ng-model="image">
-                <md-radio-button ng-value="image.hide">hide</md-radio-button>
-                <md-radio-button ng-value="image._delete"> Delete </md-radio-button>
-
-            </md-radio-group>-->
-        </div>
-    </md-list-item>
-</md-list>
-
-<!--<section>
+﻿<section>
     <div>
         <table>
             <tr>
@@ -55,61 +10,22 @@
             <tr ng-repeat="image in images">
                 <td>{{ image.image.ID }}</td>
                 <td>
-                    <img class="edit_img" style="width: 300px;height: 200px;"
+                    <img class="edit_img" style="width: 600px;height: 450px;"
                          id="{{ image.image.ID }}" ng-src="data:{{image.image.ContentType}};base64,{{image.image.Image}}"
-                         alt="{{ image.FileName }}" />
+                         alt="{{ image.image.FileName }}" />
                 </td>
-                <td>{{ image.hide }}</td>
-                <td>{{ image._delete }}</td>
+                <td>
+                    <md-checkbox ng-checked="image.hide" ng-click="checkClickImage(image,'hide')">
+                        Hide
+                    </md-checkbox>
+                </td>
+                <td>
+                    <md-checkbox ng-checked="image._delete" ng-click="checkClickImage(image,'_delete')">
+                        Delete
+                    </md-checkbox>
+                </td>
             </tr>
         </table>
     </div>
-</section>-->
-
-<script>
-    // EditTour Remove Picture
-    function SelectPicture(o) {
-        if ($(o).css("opacity") == "1") {
-            $(o).css("opacity", ".4");
-        } else {
-            $(o).css("opacity", "1");
-        }
-        AddHiddenID();
-    }
-
-    function AddHiddenID() {
-        var array = "";
-        $(".image").each(function () {
-            if ($(this).css("opacity") != "1") {
-                array += $(this).attr("id") + ",";
-            }
-        });
-
-        $("#PictureArray").val(array);
-
-        if ($("#PictureArray").val().length != 0) {
-            $("#RemoveBtn").removeClass("disabled");
-            $("#DeletePicture").text("");
-        }
-        else
-            $("#RemoveBtn").addClass("disabled");
-    }
-
-    function RemovePicture(o) {
-        if ($("#PictureArray").val().length == 0) {
-            $(o).addClass("disabled");
-            $("#DeletePicture").text("Please, select images for delete.");
-            return false;
-        } else {
-            $(o).removeClass("disabled");
-            $("#DeletePicture").text("");
-            return true;
-        }
-        return false;
-    }
-
-    function LoadImages() {
-        $("#Pictures").click();
-    }
-    // End Remove Picutre
-</script>
+</section>
+<input type="button" value="check" ng-click="check()" />

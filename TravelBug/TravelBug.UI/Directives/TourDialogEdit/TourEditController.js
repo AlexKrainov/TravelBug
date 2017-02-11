@@ -23,13 +23,16 @@
             { name: "France", value: false }
         ];
         $scope.images = [];
+        $scope.costs = [];
+        $scope.isReady = false;
 
         //###############    Methods
         $scope.SaveAs = SaveAs;
         $scope.closeDialog = closeDialog;
         $scope.checkClick = checkClick;
         $scope.getTheFiles = getTheFiles;
-        $scope.loadFile = loadFile;
+        $scope.checkClickImage = checkClickImage;
+        $scope.checkCosts = checkCosts;
 
         //#################    Methods
 
@@ -45,6 +48,20 @@
                 language.value = !language.value;
             }
         }
+        function checkClickImage(image, type) {
+            if ($scope.isReady) {
+                if (type == "hide") {
+                    image.hide = !image.hide
+                } else if (type == "_delete") {
+                    image._delete = !image._delete
+                }
+            }
+        }
+        function checkCosts(cost) {
+            if ($scope.isReady && cost) {
+                $scope.Card.Cost = cost.Money;
+            }
+        }
 
         function SaveAs(draft) {
             if ($scope.myForm.invitation.$valid) {
@@ -56,6 +73,7 @@
 
                 if (files.length == 0) {
                     saveWithoutImages(draft);
+                    return;
                 }
 
                 // Checking whether FormData is available in browser
@@ -93,26 +111,31 @@
         }
 
         function saveWithoutImages(draft) {
-            AdminTableService.onUpdate(cardToJSON(), languagesToJSON())
-                .then(function () {
-                    if (!draft) {
-                        closeDialog();
+            AdminTableService.onUpdate(cardToJSON())
+                .then(function (res) {
+
+                    if (ID == 0) {
+
+                        if (!draft) {
+                            closeDialog();
+                        } else {
+                            $scope.isReady = true;
+                        }
+
                     } else {
-                        $scope.isReady = true;
+
+                        AdminTableService.OnRemoveImages(ID, removeImagesToJSON())
+                    .then(function (result) {
+                        if (!draft) {
+                            closeDialog();
+                        } else {
+                            $scope.isReady = true;
+                        }
+
+                    });
                     }
+
                 });
-        }
-
-        function loadFile() {
-
-            return $http.get('/Admin/getFiles/' + $scope.Card.Id)
-                     .success(function (data, status, headers, config) {
-                         var data = JSON.parse(data);
-                         for (var i = 0; i < data.length; i++) {
-                             $scope.images.push({ image: data[i], hide: data[i].Delete, _delete: false });
-                         }
-                     });
-
         }
 
         //Format json [ key: "value" ]
@@ -121,19 +144,54 @@
                 "Id": $scope.Card.Id,
                 "Title": $scope.Card.Title,
                 "Description": $scope.Card.Description,
-                "TimeID": $scope.Card.TimeID
+                "TimeID": $scope.Card.TimeID,
+                "Cost": [{
+                    "ID": 0,
+                    "Money": $scope.Card.Cost
+                }],
+                "Language": languagesToJSON()
             };
             return JSON.stringify(sendItem);
         }
 
         //Format "English Russian "
         function languagesToJSON() {
-            var langValue = "";
+            var langValue = [];
             for (var i = 0; i < $scope.languages.length; i++) {
-                if ($scope.languages[i].value) langValue = langValue + " " + $scope.languages[i].name;
+                if ($scope.languages[i].value) {
+                    langValue.push({ "ID": 0, "Name_Language": $scope.languages[i].name });
+                }
             }
-
             return langValue;
+        }
+
+        function removeImagesToJSON() {
+            var removeImages = [];
+
+            for (var i = 0; i < $scope.images.length; i++) {
+                removeImages.push({
+                    "ID": $scope.images[i].image.ID,
+                    "Hide": $scope.images[i].hide,
+                    "Delete": $scope.images[i]._delete,
+                    "ExcursionID": ID
+                });
+            }
+            return JSON.stringify(removeImages);
+        }
+
+        function loadFile() {
+            return AdminTableService.loadFile(ID)
+            .then(function (result) {
+                var data = JSON.parse(result.data);
+                for (var i = 0; i < data.length; i++) {
+                    $scope.images.push({ image: data[i], hide: data[i].Delete, _delete: false });
+                }
+                return $scope.images;
+            });
+        }
+
+        $scope.check = function check() {
+            var s = $scope;
         }
 
         function closeDialog() {
@@ -149,37 +207,49 @@
                 promises.push(AdminTableService.onEdit(ID));
             }
             promises.push(AdminTableService.getTimes());        //1
-            //promises.push(AdminTableService.);               //2
-            //promises.push(AdminTableService.getLanguage);
+            promises.push(AdminTableService.getMoney());
 
             $q.all(promises).then(function (results) {
+                $scope.costs = JSON.parse(results[2].data);
                 $scope.times = JSON.parse(results[1].data);
+                $scope.Card = isJsonString(results[0].data) ? JSON.parse(results[0].data) : results[0].data;
 
-                $scope.Card = JSON.parse(results[0].data);
 
-                var lang = $scope.Card.Language;
-                for (var i = 0; i < lang.length; i++) {
-                    for (var j = 0; j < $scope.languages.length; j++) {
-                        if ($scope.languages[j].name == lang[i].Name_Language) {
-                            $scope.languages[j].value = true;
+                if ($scope.Card.Language) {
+                    var lang = $scope.Card.Language;
+                    for (var i = 0; i < lang.length; i++) {
+                        for (var j = 0; j < $scope.languages.length; j++) {
+                            if ($scope.languages[j].name == lang[i].Name_Language) {
+                                $scope.languages[j].value = true;
+                            }
                         }
                     }
                 }
 
-                initFileUpload();
+                if ($scope.Card.Cost && $scope.Card.Cost.length == 1) {
+                    $scope.Card.Cost = $scope.Card.Cost[0].Money;
+                }
 
-                $scope.isReady = true;
+                loadFile()
+                .then(function (result) {
+                    $scope.isReady = true;
+                });
+
             });
         }
+
+        function isJsonString(str) {
+            try {
+                JSON.parse(str);
+            } catch (e) {
+                return false;
+            }
+            return true;
+        }
+
 
 
         activate();
 
-        function initFileUpload() {
-            var oldPlace = $("#AddImage");
-            var newPlace = $("#NewPlaceImage");
-            newPlace.append(oldPlace);
-
-        }
     }
 })();

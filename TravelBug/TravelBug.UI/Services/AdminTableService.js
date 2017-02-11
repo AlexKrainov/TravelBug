@@ -15,11 +15,22 @@
             onUpdate: onUpdate,
             onEdit: onEdit,
             getTimes: getTimes,
-            //  onSaveLanguage: onSaveLanguage
-            onPhoto: onPhoto
+            onPhoto: onPhoto,
+            loadFile: loadFile,
+            OnRemoveImages: onRemoveImages,
+            getMoney: getMoney
         };
 
         return service;
+
+        function loadFile(id) {
+
+            return $http.get('/Admin/getFiles/' + id)
+                     .success(function (data, status, headers, config) {
+                         return data;
+                     });
+
+        }
 
         function onPhoto(formData) {
             $http.post("/Admin/SaveFile", formData, {
@@ -54,13 +65,20 @@
                      });
         }
 
-        function onUpdate(jsonValue, valueLang) {
-            return $http.post('/Admin/OnUpdate?Name_Language=' + valueLang, jsonValue)
+        function onUpdate(jsonValue) {
+            return $http.post('/Admin/OnUpdate', jsonValue)
                     .success(function (data, status, headers, config) {
                         return data;
                     });
         }
 
+        function onRemoveImages(id, removeFiles) {
+            return $http.post('/Admin/OnRemoveImages?id=' + id, removeFiles)
+                   .success(function (data, status, headers, config) {
+                       return data;
+                   });
+        }
+        //Получение данных для карточки
         function onEdit(id) {
             return $http.get('/Admin/OnEdit/' + id)
                     .success(function (data, status, headers, config) {
@@ -70,16 +88,16 @@
 
         function getTimes() {
             return $http.get('/Admin/GetTimes')
-         .success(function (data, status, headers, config) {
-             return data;
-         });
+                 .success(function (data, status, headers, config) {
+                     return data;
+                 });
         }
 
-        //function onSaveLanguage(valueLang) {
-        //    return $http.post('/Admin/OnSaveLanguage', valueLang)
-        //          .success(function (data, status, headers, config) {
-        //              return data;
-        //          });
-        //}
+        function getMoney() {
+            return $http.get('/Admin/GetMoney')
+                .success(function (data, status, headers, config) {
+                    return data;
+                });
+        }
     }
 })();

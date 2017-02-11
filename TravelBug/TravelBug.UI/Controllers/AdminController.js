@@ -175,7 +175,7 @@
 
         function activate() {
             refresh();
-
+            showDialog($scope.$event, 1020);
 
         }
     }

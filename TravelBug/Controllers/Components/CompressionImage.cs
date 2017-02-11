@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace TravelBug.Controllers.Pages.ExcursionToServer
+namespace TravelBug.Controllers
 {
     public class CompressionImage
     {

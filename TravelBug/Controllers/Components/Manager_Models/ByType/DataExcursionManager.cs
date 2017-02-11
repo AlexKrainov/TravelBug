@@ -27,7 +27,7 @@ namespace TravelBug.Models.Manager
             return excursion.Id;
         }
 
-        internal Excursion CreateOrUpdateExcursion(Excursion _excursion, string Name_Language, string Money)
+        internal Excursion CreateOrUpdateExcursion(Excursion _excursion)
         {
             Excursion excursion = db.Excursion.FirstOrDefault(x => x.Id == _excursion.Id);
 
@@ -39,42 +39,14 @@ namespace TravelBug.Models.Manager
             excursion.TimeID = _excursion.TimeID;
             if (excursion.Id == 0) db.Excursion.Add(excursion);
             db.SaveChanges();
-
-
-            #region Update language
-            if (!string.IsNullOrEmpty(Name_Language))
-            {
-                string[] languages = Name_Language.Split(' ');
-                this.DeleteLanguageByExcursionID(excursion.Id);
-
-                for (int i = 0; i < languages.Count(); i++)
-                {
-                    this.CreateLanguage(languages.ElementAt(i), excursion.Id);
-                }
-            }
-            #endregion
-
-            #region Update cost
-            if (!string.IsNullOrEmpty(Money))
-            {
-                Cost cost = db.Cost.FirstOrDefault(x => x.ExcursionID == excursion.Id);
-                if (cost != null)
-                {
-                    cost.Money = Money;
-                }
-                else
-                {
-                    cost = new Cost();
-                    cost.ExcursionID = excursion.Id;
-                    cost.Money = Money;
-                    db.Cost.Add(cost);
-                }
-            }
-            #endregion
+            
+            this.CreateOrUpdateLanguage(_excursion.Language, _excursion.Id);
+            this.CreateOrUpdateCosts(_excursion.Cost, _excursion.Id);
 
             db.SaveChanges();
             return excursion;
         }
+
 
         internal bool DeleteExcursionByID(int id)
         {

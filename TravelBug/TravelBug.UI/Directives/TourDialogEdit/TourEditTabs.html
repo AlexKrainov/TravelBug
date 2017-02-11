@@ -1,7 +1,7 @@
-﻿<md-dialog aria-label="Mango (Fruit)">
+﻿<md-dialog aria-label="Создание тура">
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <h2>Mango (Fruit)</h2>
+            <h2>Создание тура ({{ Card.Id }})</h2>
             <span flex></span>
             <md-button class="md-icon-button" ng-click="cancel()">
                 <!--md-svg-src="img/icons/ic_close_24px.svg"-->
@@ -10,10 +10,7 @@
         </div>
     </md-toolbar>
     <!--style="max-width:800px;max-height:810px; "-->
-    <div ng-show="!isReady">
-        <md-progress-linear md-mode="indeterminate"></md-progress-linear>
-    </div>
-    <md-dialog-content>
+    <md-dialog-content ng-show="isReady">
         <md-tabs md-dynamic-height md-border-bottom>
             <md-tab label="Общая информация">
                 <md-content class="md-padding">
@@ -21,12 +18,12 @@
                 </md-content>
             </md-tab>
             <md-tab label="Фото, картинки ...">
-                <md-content class="md-padding">
+                <md-content class="md-padding" style="width: 1000px;">
                     <div ng-include src="'../TravelBug.UI/Directives/TourDialogEdit/TourEdit_LoadImages.html'"></div>
                 </md-content>
             </md-tab>
             <md-tab label="Удаление картинок">
-                <md-content class="md-padding">
+                <md-content class="md-padding" style="width: 1000px;">
                     <div ng-include src="'../TravelBug.UI/Directives/TourDialogEdit/TourEdit_RemoveImages.html'"></div>
                 </md-content>
             </md-tab>
@@ -37,14 +34,19 @@
         </md-tabs>
     </md-dialog-content>
 
+    <div ng-hide="isReady">
+        <div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        </div>
+    </div>
+
     <md-dialog-actions layout="row">
 
         <section layout="row" layout-sm="row" layout-align="end end" layout-wrap>
             <md-button ng-click="SaveAs(true)"
-                       ng-disabled="isReady"
                        class="md-raised md-warn">Сохранить как</md-button>
             <md-button ng-click="SaveAs()"
-                       ng-disabled="isReady"
+                       ng-disabled="!myForm.invitation.$valid"
                        class="md-raised md-warn">Сохранить и закрыть</md-button>
         </section>
         <span flex></span>

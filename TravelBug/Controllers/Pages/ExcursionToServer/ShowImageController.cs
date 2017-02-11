@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TravelBug.Models.TravelBugModel;
 
-namespace TravelBug.Controllers.Pages.ExcursionToServer
+namespace TravelBug.Controllers
 {
     public class ShowImageController : BaseController
     {

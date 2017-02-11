@@ -24,8 +24,7 @@ namespace TravelBug.Models.TravelBugModel
 
         public string Description { get; set; }
 
-        [StringLength(50)]
-        public string Time { get; set; }
+        public bool Deleted { get; set; }
 
         public int? TimeID { get; set; }
 

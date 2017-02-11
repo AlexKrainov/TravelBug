@@ -22,6 +22,24 @@ namespace TravelBug.Models.Manager
 
         }
 
+        internal bool UpdatePhotoByID(int id, bool value)
+        {
+            try
+            {
+                Photo oldPhoto = db.Photo.FirstOrDefault(x => x.ID == id);
+                oldPhoto.Delete = value;
+
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+                return false; // ?
+            }
+
+            return true;
+        }
+
         internal bool RemovePhotoByID(int id)
         {
             try

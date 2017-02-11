@@ -18,11 +18,11 @@ namespace TravelBug.Models.TravelBugModel
         public virtual DbSet<Photo> Photo { get; set; }
         public virtual DbSet<Time> Time { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Excursion>()
-                .Property(e => e.Time)
-                .IsFixedLength();
-        }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Excursion>()
+        //        .Property(e => e.Time)
+        //        .IsFixedLength();
+        //}
     }
 }
