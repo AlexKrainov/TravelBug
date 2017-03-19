@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Index";
-    this.Layout = "~/Views/Shared/_LayoutCastom.cshtml";
+    this.Layout = "~/Views/Shared/_LayoutMinAdmin.cshtml";
 
 }
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -68,11 +68,9 @@
                     <tr md-row>
                         <th md-column md:order:by="ID"><span>ID</span></th>
                         <th md-column md:order:by="Title"><span>Title</span></th>
-                        <th md-column data-md-numeric data-md-order-by="Description" data-md-desc><span>Description</span></th>
-                        <th md-column data-md-numeric data-md-order-by="Time"><span>Time</span></th>
-                        @*<th md-column data-md-numeric data-md-order-by="Name_Language"><span>Name_Language</span></th>
-                            <th md-column data-md-numeric data-md-order-by="Image" data-hide-sm><span>Image (Count)</span></th>*@
-                    </tr>
+                        @*<th md-column data-md-numeric data-md-order-by="Description" data-md-desc><span>Description</span></th>*@
+                        @*<th md-column data-md-numeric data-md-order-by="Time"><span>Time</span></th>*@
+                      </tr>
                 </thead>
                 <tbody md-body>
                     <tr md-row md-select="item" md-select-id="id" md-on-deselect="deselect"
@@ -80,8 +78,8 @@
                         data-ng-repeat="item in tours | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page - 1) * query.limit">
                         <td md-cell>{{item.id}}</td>
                         <td md-cell>{{item.Title}}</td>
-                        <td md-cell>{{item.Description}}</td>
-                        <td md-cell>{{item.Time}}</td>
+                        @*<td md-cell>{{item.Description}}</td>*@
+                        @*<td md-cell>{{item.Time}}</td>*@
                         @*<td md-cell>
                                 <md-select ng-model="dessert.type" placeholder="Other">
                                     <md-option ng-value="type" ng-repeat="type in getTypes()">{{type}}</md-option>

@@ -30,18 +30,18 @@
         $scope.SaveAs = SaveAs;
         $scope.closeDialog = closeDialog;
         $scope.checkClick = checkClick;
-        $scope.getTheFiles = getTheFiles;
         $scope.checkClickImage = checkClickImage;
         $scope.checkCosts = checkCosts;
+        $scope.removeTour = removeTour;
 
         //#################    Methods
 
-        function getTheFiles($files) {
-            var formdata = new FormData();
-            angular.forEach($files, function (value, key) {
-                formdata.append(key, value);
-            });
-        }
+        //function getTheFiles($files) {
+        //    var formdata = new FormData();
+        //    angular.forEach($files, function (value, key) {
+        //        formdata.append(key, value);
+        //    });
+        //}
 
         function checkClick(language, selected) {
             if ($scope.isReady) {
@@ -179,6 +179,19 @@
             return JSON.stringify(removeImages);
         }
 
+        function removeTour() {
+            $scope.isReady = false;
+            if ($scope.Card.Id && confirm("Are your sure, you wanna remove tour ?")) {
+                AdminTableService.onRemoveTour($scope.Card.Id)
+                .then(function (result) {
+                    if (result && result.data) {
+                        closeDialog();
+                    }
+                });
+            }
+            $scope.isReady = true;
+        }
+
         function loadFile() {
             return AdminTableService.loadFile(ID)
             .then(function (result) {
@@ -188,14 +201,6 @@
                 }
                 return $scope.images;
             });
-        }
-
-        $scope.check = function check() {
-            var s = $scope;
-        }
-
-        function closeDialog() {
-            $mdDialog.cancel();
         }
 
         function activate() {
@@ -238,6 +243,10 @@
             });
         }
 
+
+
+
+
         function isJsonString(str) {
             try {
                 JSON.parse(str);
@@ -247,7 +256,9 @@
             return true;
         }
 
-
+        function closeDialog() {
+            $mdDialog.cancel();
+        }
 
         activate();
 

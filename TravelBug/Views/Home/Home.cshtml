@@ -3,17 +3,81 @@
 
 }
 
+<script src="~/TravelBug.UI/Services/TourService.js"></script>
+<script src="~/TravelBug.UI/Controllers/ExcursionsController.js"></script>
+
+
 @*@Html.Action("View", "Slider")*@
-<section id="two" class="wrapper style2 special slider">
-    @Html.Partial("~/Views/Partials/SliderPartialView.cshtml")
+@*<section id="two" class="wrapper style2 special slider">
+        @Html.Partial("~/Views/Partials/SliderPartialView.cshtml")
+    </section>*@
+
+<section id="one" class="wrapper style1 special" ng-controller="excursionsCtrl as exsCtrl">
+    <div class="container">
+        <header class="major">
+            <h2>Other excursions:</h2>
+            @*<p>Lorem ipsum dolor sit amet, delectus consequatur, similique quia!</p>*@
+        </header>
+        <style>
+            section img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+        </style>
+        <div class="row 100%">
+            <div ng-repeat="tour in tours" class="4u 12u$(medium)" id="{{ tour.Id }}">
+                <section class="box">
+                    <a href="../Excursion/View/{{ tour.Id }}" id="link_{{ tour.Id }}">
+                        <img ng-repeat="image in tour.Photo" class="imgTour"
+                             id="{{ image.ID }}" ng-src="data:{{image.ContentType}};base64,{{image.Image}}"
+                             alt="{{ image.FileName }}" />
+                        <img ng-show="tour.Photo.length == 0" src="../Content/images/UI/no_image.svg" />
+                    </a>
+                    <a href="../Excursion/View/{{ tour.Id }}">
+                        <h3>{{ tour.Title }}</h3>
+                    </a>
+                    <md-card-actions layout="row" layout-align="center">
+                        <md-button class="md-icon-button" aria-label="Favorite">
+                            <md-icon md-svg-icon="../Content/images/UI/favorite.svg"></md-icon>
+                        </md-button>
+                        <md-button class="md-icon-button" aria-label="Settings">
+                            <md-icon md-svg-icon="../Content/images/UI/filter_list.svg"></md-icon>
+                        </md-button>
+                        <md-button class="md-icon-button" aria-label="Share">
+                            <md-icon md-svg-icon="../Content/images/UI/open_new.svg"></md-icon>
+                        </md-button>
+                    </md-card-actions>
+                </section>
+            </div>
+        </div>
+        <style>
+            .imgTour {
+                transition: all .2s ease-in-out;
+                opacity: 0.8;
+            }
+
+                .imgTour:hover {
+                    transform: scale(1.1);
+                    opacity: 1;
+                }
+        </style>
+
+
+
+
+
+
+
+        @* <div ng-include src="'../TravelBug.UI/Partials_UI/ToursPartialView.html'"></div>*@
+    </div>
 </section>
-<section id="one" class="wrapper style1 special">
-    @*@Html.Action("AdminPage", "Excursion")*@
-    @{
+@*@Html.Action("AdminPage", "Excursion")*@
+@*@{
         List<TravelBug.Models.TravelBugModel.Excursion> excursions = (List<TravelBug.Models.TravelBugModel.Excursion>)ViewBag.Excursions;
         @Html.Partial("~/Views/Partials/ExursionsPartialView.cshtml", excursions)
-    }
-</section>
+    }*@
+
+
 <section id="three" class="wrapper style3 special">
     @Html.Partial("~/Views/Partials/ContactFormPartial.cshtml")
 </section>

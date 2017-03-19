@@ -75,7 +75,7 @@
                     ID: id
                 }
             }).then(function (answer) {
-                if (answer == "Save")
+                if (answer === "Save")
                     refresh();
             }, function () {
                 refresh();
@@ -114,7 +114,7 @@
         }
 
         function deleteTour() {
-            if ($scope.selected && $scope.selected.length != 0) {
+            if ($scope.selected && $scope.selected.length !== 0) {
                 if (confirm("Вы уверены, что хотите удалить этот " + $scope.selected[0].Title + "?")) {
 
                     var promises = [];
@@ -175,7 +175,7 @@
 
         function activate() {
             refresh();
-            showDialog($scope.$event, 1020);
+           // showDialog($scope.$event, null);// 1020);
 
         }
     }

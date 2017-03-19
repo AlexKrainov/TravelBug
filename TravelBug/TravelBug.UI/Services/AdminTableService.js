@@ -18,7 +18,8 @@
             onPhoto: onPhoto,
             loadFile: loadFile,
             OnRemoveImages: onRemoveImages,
-            getMoney: getMoney
+            getMoney: getMoney,
+            onRemoveTour: onRemoveTour
         };
 
         return service;
@@ -78,6 +79,14 @@
                        return data;
                    });
         }
+        function onRemoveTour(id) {
+            //Http.delete don't work 
+            return $http.post('/Admin/OnRemoveTour?id=' + id)
+                  .success(function (data, status, headers, config) {
+                      return data;
+                  });
+        }
+
         //Получение данных для карточки
         function onEdit(id) {
             return $http.get('/Admin/OnEdit/' + id)

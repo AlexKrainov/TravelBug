@@ -13,7 +13,7 @@ namespace TravelBug.Models.Manager
             return db.Excursion.FirstOrDefault(x => x.Id == id);
         }
 
-        internal IQueryable<Excursion> GetExcursionByID()
+        internal IQueryable<Excursion> GetExcursions()
         {
             //ToDo: and Delete != false
             return db.Excursion.Where(x => !string.IsNullOrEmpty(x.Title));

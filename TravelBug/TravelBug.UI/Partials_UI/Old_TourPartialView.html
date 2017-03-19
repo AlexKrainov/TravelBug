@@ -1,0 +1,112 @@
+﻿<style>
+    .s48 {
+        width: 68px;
+        height: 68px;
+    }
+</style>
+
+<div class="container" ng-controller="excursionCtrl as exCtrl">
+    <!--<md-card md-theme="dark-blue">
+        <md-card-title>
+            <md-card-title-text layout-align="start center">
+                <span class="md-headline">{{ tour.Title }}</span>
+                <span class="md-subhead">{{ tour.Description }}</span>
+            </md-card-title-text>
+            <md-card-title-media>
+                <div class="8u" ng-repeat="image in tour.Photo" style="{{ image.Delete ? '' : 'display: none;'}}" ng-click="showNextImage();">
+                    <img id="{{ image.ID }}" ng-src="data:{{image.ContentType}};base64,{{image.Image}}"
+                         alt="{{ image.FileName }}" />
+                </div>
+            </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button>Action 1</md-button>
+            <md-button>Action 2</md-button>
+            d-
+            ti
+        </md-card-actions>
+    </md-card>-->
+
+
+
+    <section>
+
+        <header class="major">
+            <h3>{{ tour.Title }} </h3>
+        </header>
+        <div layout="row" layout-align="center">
+            <div class="md-list-item-text">
+                <md-icon class="s48" md-svg-icon="../../Content/images/UI/time.svg"></md-icon>
+                <h3>123</h3>
+            </div>
+            <div class="md-list-item-text">
+                <md-icon class="s48" md-svg-icon="../../Content/images/UI/money_on.svg"></md-icon>
+                <h4>
+                    123
+                </h4>
+            </div>
+
+            <div class="md-list-item-text">
+                <md-icon class="s48" md-svg-icon="../../Content/images/UI/time.svg"></md-icon>
+                <h3>123</h3>
+            </div>
+            <div class="md-list-item-text">
+                <md-icon class="s48" md-svg-icon="../../Content/images/UI/money_on.svg"></md-icon>
+                <h4>
+                    123
+                </h4>
+            </div>
+            <div class="md-list-item-text">
+                <md-icon class="s48" md-svg-icon="../../Content/images/UI/time.svg"></md-icon>
+                <h3>123</h3>
+            </div>
+            <div class="md-list-item-text">
+                <md-icon class="s48" md-svg-icon="../../Content/images/UI/money_on.svg"></md-icon>
+                <h4>
+                    123
+                </h4>
+            </div>
+            <div class="md-list-item-text">
+                <md-icon class="s48" md-svg-icon="../../Content/images/UI/time.svg"></md-icon>
+                <h3>123</h3>
+            </div>
+            <div class="md-list-item-text">
+                <md-icon class="s48" md-svg-icon="../../Content/images/UI/money_on.svg"></md-icon>
+                <h4>
+                    123
+                </h4>
+            </div>
+            <md-icon class="s48" md-svg-icon="../../Content/images/UI/money_off.svg"></md-icon>
+            <md-icon class="s48" md-svg-icon="../../Content/images/UI/talk.svg"></md-icon>
+        </div>
+        <p>
+            <div class="image right profiles">
+                <div class="row uniform">
+                    <div class="12u" ng-repeat="image in tour.Photo" style="{{ image.Delete ? '' : 'display: none;'}}" ng-click="showNextImage();">
+                        <span class="image fit">
+                            <img id="{{ image.ID }}" ng-src="data:{{image.ContentType}};base64,{{image.Image}}"
+                                 alt="{{ image.FileName }}" />
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!--<img src="../../Content/images/pic03.jpg" alt="">-->
+            {{ tour.Description }}
+        </p>
+
+    </section>
+
+    <!--<section class="profiles">
+        <div class="row">
+            <section class="4u 12u$(small) profile" ng-repeat="image in tour.Photo">
+                    <img id="{{ image.ID }}" ng-src="data:{{image.ContentType}};base64,{{image.Image}}"
+                         alt="{{ image.FileName }}" />
+            </section>
+        </div>
+    </section>-->
+    <!--<img ng-repeat="image in tour.Photo"
+      id="{{ image.ID }}" ng-src="data:{{image.ContentType}};base64,{{image.Image}}"
+      alt="{{ image.FileName }}" />-->
+    <!--<p>{{ tour.Description }}</p>-->
+
+</div>

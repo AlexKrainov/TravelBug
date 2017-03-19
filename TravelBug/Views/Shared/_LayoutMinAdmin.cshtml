@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html ng-app="TravelBagApp" lang="en">
+@*ng-app="TravelBagApp">*@
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0">*@
+    <!--[if lte IE 8]><script src="~/Content/Scripts/js/html5shiv.js"></script><![endif]-->
+    <script src="~/Content/Scripts/js/jquery.min.js"></script>
+    @*<script src="~/Content/Scripts/js/skel.min.js"></script>*@
+    <script src="~/Content/Scripts/js/skel-layers.min.js"></script>
+    <script src="~/Content/Scripts/js/init.js"></script>
+
+    <link rel="stylesheet" href="~/Content/Style/css/skel.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/Style/css/style.css" />
+    <link rel="stylesheet" href="~/Content/Style/css/style-xlarge.css" />
+
+
+    <link rel="import" href="~/TravelBug.UI/BaseFileStyle.html">
+    <link rel="import" href="~/TravelBug.UI/BaseFileScript.html">
+
+    <script>
+        (function () {
+            var version = "1.2.2.0";
+            'use strict';
+            var app = angular.module("TravelBagApp",
+                  [
+                      "ngMessages",
+                      "ngSanitize",
+                      "ngRoute",
+                      "ngMaterial",
+                      ////"ngFileUpload",
+                      ////"kendo.directives",
+                      ////'vAccordion',
+                      'ngAnimate',
+                      'md.data.table',
+                      'ngMaterial',
+                      "TravelBagApp.Common",
+                      "TravelBagApp.Services",
+                      "TravelBagApp.Controllers"
+                  ]);
+            angular.module("TravelBagApp.Common", []); //ToDo ??
+            angular.module("TravelBagApp.Services", []);
+            angular.module("TravelBagApp.Controllers", []);
+            app
+                //Для таблицы в админке
+                .config(['$mdThemingProvider', function ($mdThemingProvider) {
+                    'use strict';
+
+                    $mdThemingProvider.theme('default')
+                      .primaryPalette('blue')
+                      .accentPalette('pink');
+                }]);
+        })();
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <h1><a href="index.html">Transit</a></h1>
+        <nav id="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="generic.html">Generic</a></li>
+                <li><a href="elements.html">Elements</a></li>
+                <li><a href="#" class="button special">Sign Up</a></li>
+                <li>@Html.ActionLink("Admin page", "Admin", "Index")</li>
+                <li>@Html.ActionLink("get all Excursion (old)", "AdminPage", "Excursions")</li>
+                <li>@Html.ActionLink("Home page", "Home", "Home")</li>
+            </ul>
+        </nav>
+    </header>
+
+    @RenderBody()
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <section class="links">
+                <div class="row">
+                    <section class="3u 6u(medium) 12u$(small)">
+                        <h3>Lorem ipsum dolor</h3>
+                        <ul class="unstyled">
+                            <li><a href="#">Lorem ipsum dolor sit</a></li>
+                            <li><a href="#">Nesciunt itaque, alias possimus</a></li>
+                            <li><a href="#">Optio rerum beatae autem</a></li>
+                            <li><a href="#">Nostrum nemo dolorum facilis</a></li>
+                            <li><a href="#">Quo fugit dolor totam</a></li>
+                        </ul>
+                    </section>
+                    <section class="3u 6u$(medium) 12u$(small)">
+                        <h3>Culpa quia, nesciunt</h3>
+                        <ul class="unstyled">
+                            <li><a href="#">Lorem ipsum dolor sit</a></li>
+                            <li><a href="#">Reiciendis dicta laboriosam enim</a></li>
+                            <li><a href="#">Corporis, non aut rerum</a></li>
+                            <li><a href="#">Laboriosam nulla voluptas, harum</a></li>
+                            <li><a href="#">Facere eligendi, inventore dolor</a></li>
+                        </ul>
+                    </section>
+                    <section class="3u 6u(medium) 12u$(small)">
+                        <h3>Neque, dolore, facere</h3>
+                        <ul class="unstyled">
+                            <li><a href="#">Lorem ipsum dolor sit</a></li>
+                            <li><a href="#">Distinctio, inventore quidem nesciunt</a></li>
+                            <li><a href="#">Explicabo inventore itaque autem</a></li>
+                            <li><a href="#">Aperiam harum, sint quibusdam</a></li>
+                            <li><a href="#">Labore excepturi assumenda</a></li>
+                        </ul>
+                    </section>
+                    <section class="3u$ 6u$(medium) 12u$(small)">
+                        <h3>Illum, tempori, saepe</h3>
+                        <ul class="unstyled">
+                            <li><a href="#">Lorem ipsum dolor sit</a></li>
+                            <li><a href="#">Recusandae, culpa necessita nam</a></li>
+                            <li><a href="#">Cupiditate, debitis adipisci blandi</a></li>
+                            <li><a href="#">Tempore nam, enim quia</a></li>
+                            <li><a href="#">Explicabo molestiae dolor labore</a></li>
+                        </ul>
+                    </section>
+                </div>
+            </section>
+            <div class="row">
+                <div class="8u 12u$(medium)">
+                    <ul class="copyright">
+                        <li>&copy; Untitled. All rights reserved.</li>
+                        <li>Design: <a href="http://templated.co">TEMPLATED</a></li>
+                        <li>Images: <a href="http://unsplash.com">Unsplash</a></li>
+                    </ul>
+                </div>
+                <div class="4u$ 12u$(medium)">
+                    <ul class="icons">
+                        <li>
+                            <a class="icon rounded fa-facebook"><span class="label">Facebook</span></a>
+                        </li>
+                        <li>
+                            <a class="icon rounded fa-twitter"><span class="label">Twitter</span></a>
+                        </li>
+                        <li>
+                            <a class="icon rounded fa-google-plus"><span class="label">Google+</span></a>
+                        </li>
+                        <li>
+                            <a class="icon rounded fa-linkedin"><span class="label">LinkedIn</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    @*<link rel="import" href="~/TravelBug.UI/BaseFileScript.html">*@
+</body>
+</html>

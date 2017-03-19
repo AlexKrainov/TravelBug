@@ -1,29 +1,67 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+
+<html ng-app="TravelBagApp" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>TravelBug</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    @*<meta name="viewport" content="width=device-width, initial-scale=1.0">*@
-    <!--[if lte IE 8]><script src="~/Content/Scripts/js/html5shiv.js"></script><![endif]-->
+
+    <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
     <script src="~/Content/Scripts/js/jquery.min.js"></script>
-    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
-    @*<script src="~/Content/Scripts/js/skel.min.js"></script>*@
-    @*<script src="~/Content/Scripts/js/skel-layers.min.js"></script>
-        <script src="~/Content/Scripts/js/init.js"></script>*@
+    @*<script src="~/Scripts/jquery-3.1.1.min.js"></script>*@
+    <script src="~/Content/Scripts/js/new_skel.min.js"></script>
+    <script src="~/Content/Scripts/js/skel-layers.min.js"></script>
+    <script src="~/Content/Scripts/js/init.js"></script>
+    <noscript>
+        <link rel="stylesheet" href="~/Content/Style/css/skel.css" />
+        <link rel="stylesheet" href="~/Content/Style/css/style.css" />
+        <link rel="stylesheet" href="~/Content/Style/css/style-xlarge.css" />
+    </noscript>
 
-    <link rel="stylesheet" href="" />
-    <link rel="stylesheet" href="~/Content/Style/css/skel.css" type="text/css" />
-    <link rel="stylesheet" href="~/Content/Style/css/style.css" />
-    <link rel="stylesheet" href="~/Content/Style/css/style-xlarge.css" />
 
+    <link rel="import" href="~/TravelBug.UI/BaseFileStyle.html">
+    <link rel="import" href="~/TravelBug.UI/BaseFileScript.html">
+
+    <script>
+        (function () {
+            var version = "1.2.2.0";
+            'use strict';
+            var app = angular.module("TravelBagApp",
+                  [
+                      "ngMessages",
+                      "ngSanitize",
+                      "ngRoute",
+                      "ngMaterial",
+                      ////"ngFileUpload",
+                      ////"kendo.directives",
+                      ////'vAccordion',
+                      'ngAnimate',
+                      'ngMaterial',
+                      "TravelBagApp.Common",
+                      "TravelBagApp.Services",
+                      "TravelBagApp.Controllers"
+                  ]);
+            angular.module("TravelBagApp.Common", []); //ToDo ??
+            angular.module("TravelBagApp.Services", []);
+            angular.module("TravelBagApp.Controllers", []);
+            //app
+            //    //Для таблицы в админке
+            //    .config(['$mdThemingProvider', function ($mdThemingProvider) {
+            //        'use strict';
+
+            //        $mdThemingProvider.theme('default')
+            //          .primaryPalette('blue')
+            //          .accentPalette('pink');
+            //    }]);
+        })();
+    </script>
 </head>
 <body class="landing">
     <!-- Header -->
     <header id="header">
-        <h1><a href="index.html">Transit</a></h1>
+        <h1>@Html.ActionLink("TravelBug", "MainView", "Home")</h1>
         <nav id="nav">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -31,14 +69,15 @@
                 <li><a href="elements.html">Elements</a></li>
                 <li><a href="#" class="button special">Sign Up</a></li>
                 <li>@Html.ActionLink("Create new Excursion", "Excursion", "Create")</li>
-                <li>@Html.ActionLink("get all Excursion", "AdminPage", "Excursions")</li>
+                <li>@Html.ActionLink("get all Excursion", "Index", "Admin")</li>
                 <li>@Html.ActionLink("Home page", "MainView", "Home")</li>
             </ul>
         </nav>
     </header>
+
     <!-- Banner -->
     <section id="banner">
-        <h2>Hi. This is Transit.</h2>
+        <h2>Hi. This is TravelBug.</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
         <ul class="actions">
             <li>
@@ -49,8 +88,8 @@
 
     <!-- One -->
     @RenderBody()
-
-    <!-- Three -->
+    <!-- Two -->
+    <section id="two" class="wrapper style2 special"></section>
     <!-- Footer -->
     <footer id="footer">
         <div class="container">
@@ -76,7 +115,7 @@
                             <li><a href="#">Facere eligendi, inventore dolor</a></li>
                         </ul>
                     </section>
-                    <section class="3u 6u(medium) 12u$(small)">
+                    @*<section class="3u 6u(medium) 12u$(small)">
                         <h3>Neque, dolore, facere</h3>
                         <ul class="unstyled">
                             <li><a href="#">Lorem ipsum dolor sit</a></li>
@@ -95,7 +134,7 @@
                             <li><a href="#">Tempore nam, enim quia</a></li>
                             <li><a href="#">Explicabo molestiae dolor labore</a></li>
                         </ul>
-                    </section>
+                    </section>*@
                 </div>
             </section>
             <div class="row">
@@ -125,6 +164,6 @@
             </div>
         </div>
     </footer>
-    @*<script src="~/Scripts/bootstrap.min.js"></script>*@
+    @*<script src="~/Content/Scripts/bootstrap.min.js"></script>*@
 </body>
 </html>

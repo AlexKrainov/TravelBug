@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "Index";
+    this.Layout = "~/Views/Shared/_LayoutMin.cshtml";
+
+}
+
+<script src="~/TravelBug.UI/Services/TourService.js"></script>
+<script src="~/TravelBug.UI/Controllers/ExcursionController.js"></script>
+<script>
+    var tourID = @ViewBag.ExcursionID;
+
+</script>
+
+<section id="main" class="wrapper">
+    @*<div ng-include src="'../../TravelBug.UI/Partials_UI/TourPartialView.html'"></div>*@
+    <style>
+        .s48 {
+            width: 68px;
+            height: 68px;
+        }
+
+        .span4 {
+            margin-left: 18%;
+        }
+
+        .imgMax {
+            width: 630px;
+            height: 425px;
+        }
+    </style>
+
+    <div class="container" ng-controller="excursionCtrl as exCtrl">
+        <!--<md-card md-theme="dark-blue">
+            <md-card-title>
+                <md-card-title-text layout-align="start center">
+                    <span class="md-headline">{{ tour.Title }}</span>
+                    <span class="md-subhead">{{ tour.Description }}</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <div class="8u" ng-repeat="image in tour.Photo" style="{{ image.Delete ? '' : 'display: none;'}}" ng-click="showNextImage();">
+                        <img id="{{ image.ID }}" ng-src="data:{{image.ContentType}};base64,{{image.Image}}"
+                             alt="{{ image.FileName }}" />
+                    </div>
+                </md-card-title-media>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button>Action 1</md-button>
+                <md-button>Action 2</md-button>
+                d-
+                ti
+            </md-card-actions>
+        </md-card>-->
+        tour.Time: {{ tour.Time }}
+        <section>
+
+            <header class="major">
+                <h3>{{ tour.Title }} </h3>
+            </header>
+            <div class="row">
+                <div class="span4" ng-if="tour.Time">
+                    <md-icon class="s48" md-svg-icon="../../Content/images/UI/time.svg"></md-icon>
+                    <p>{{ tour.Time.Option }}</p>
+                </div>
+                <div class="span4" ng-if="tour.Cost">
+                    <md-icon class="s48" md-svg-icon="../../Content/images/UI/money_on.svg"></md-icon>
+                    <p>{{ tour.Cost.Money }}</p>
+                </div>
+                <div class="span4" ng-if="!tour.Cost">
+                    <md-icon class="s48" md-svg-icon="../../Content/images/UI/money_off.svg"></md-icon>
+                </div>
+                <div class="span4">
+                    <md-icon class="s48" md-svg-icon="../../Content/images/UI/talk.svg"></md-icon>
+                    <div ng-repeat="lang in tour.Language">
+                        <p>{{ lang.Name_Language }}</p>
+                    </div>
+                </div>
+            </div>
+            <p>
+                <div class="row">
+                    <div class="col-md-5">{{ tour.Description }}</div>
+                    <div class="col-md-6">
+                        <div ng-repeat="image in tour.Photo" style="{{ image.Delete ? '' : 'display: none;'}}" ng-click="showNextImage();">
+                            <img id="{{ image.ID }}" ng-src="data:{{image.ContentType}};base64,{{image.Image}}"
+                                 alt="{{ image.FileName }}" class="img-fluid imgMax" />
+                        </div>
+                    </div>
+
+                </div>
+
+                @*<div class="image right profiles">
+                        <div class="row uniform">
+                            <div class="12u" ng-repeat="image in tour.Photo" style="{{ image.Delete ? '' : 'display: none;'}}" ng-click="showNextImage();">
+                                <span class="image fit">
+                                    <img id="{{ image.ID }}" ng-src="data:{{image.ContentType}};base64,{{image.Image}}"
+                                         alt="{{ image.FileName }}" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>*@
+                <!--<img src="../../Content/images/pic03.jpg" alt="">-->
+
+            </p>
+
+        </section>
+
+
+    </div>
+
+</section>
+
+
+
+<section id="three" class="wrapper style3 special">
+    @Html.Partial("~/Views/Partials/ContactFormPartial.cshtml")
+</section></section>

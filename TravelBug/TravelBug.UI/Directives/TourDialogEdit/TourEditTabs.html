@@ -3,9 +3,8 @@
         <div class="md-toolbar-tools">
             <h2>Создание тура ({{ Card.Id }})</h2>
             <span flex></span>
-            <md-button class="md-icon-button" ng-click="cancel()">
-                <!--md-svg-src="img/icons/ic_close_24px.svg"-->
-                <md-icon aria-label="Close dialog"></md-icon>
+            <md-button class="md-raised md-warn" ng-click="removeTour()">
+                Remove tour
             </md-button>
         </div>
     </md-toolbar>
@@ -54,11 +53,5 @@
                    ng-click="closeDialog()">
             Закрыть
         </md-button>
-        <!--<md-button ng-click="answer('not useful')">
-            Not Useful
-        </md-button>
-        <md-button ng-click="answer('useful')" style="margin-right:20px;">
-            Useful
-        </md-button>-->
     </md-dialog-actions>
 </md-dialog>

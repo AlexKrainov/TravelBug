@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Index";
+
+}
+
+@*@Html.Action("View", "Slider")*@
+<section id="two" class="wrapper style2 special slider">
+    @Html.Partial("~/Views/Partials/SliderPartialView.cshtml")
+</section>
+<section id="one" class="wrapper style1 special">
+    @*@Html.Action("AdminPage", "Excursion")*@
+    @{
+        List<TravelBug.Models.TravelBugModel.Excursion> excursions = (List<TravelBug.Models.TravelBugModel.Excursion>)ViewBag.Excursions;
+        @Html.Partial("~/Views/Partials/ExursionsPartialView.cshtml", excursions)
+    }
+</section>
+<section id="three" class="wrapper style3 special">
+    @Html.Partial("~/Views/Partials/ContactFormPartial.cshtml")
+</section>

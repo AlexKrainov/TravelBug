@@ -19,7 +19,6 @@ namespace TravelBug.Controllers.Pages
         // GET: Admin
         public ActionResult Index()
         {
-
             return View();
         }
 
@@ -47,7 +46,6 @@ namespace TravelBug.Controllers.Pages
         /// 
         /// </summary>
         /// <param name="newExcursion"></param>
-        /// <param name="Name_Language"> в формате: 'Russian France '</param>
         /// <returns></returns>
         [HttpPost]
         public JsonResult OnUpdate(Excursion newExcursion)
@@ -56,26 +54,7 @@ namespace TravelBug.Controllers.Pages
 
             return Json(true, JsonRequestBehavior.AllowGet);
         }
-
-        [HttpPost]
-        public JsonResult OnRemoveImages(int id, RemoveFiles[] removeFiles)
-        {
-            if (removeFiles != null)
-            {
-                for (int i = 0; i < removeFiles.Length; i++)
-                {
-                    if (id == removeFiles[i].ExcursionID)
-                    {
-                        if (removeFiles[i].Delete)
-                            manager.RemovePhotoByID(removeFiles[i].ID);
-                        else
-                            manager.UpdatePhotoByID(removeFiles[i].ID, removeFiles[i].Hide);
-                    }
-                }
-            }
-            return Json(true, JsonRequestBehavior.AllowGet);
-        }
-
+        
         [HttpPost]
         public ActionResult UploadFiles(int id)
         {
@@ -148,34 +127,7 @@ namespace TravelBug.Controllers.Pages
                 excursion.Cost.ElementAt(0).Excursion = null;
             }
 
-            Excursion exc = new Excursion
-            {
-                Id = excursion.Id,
-                Title = excursion.Title,
-                Description = excursion.Description,
-                TimeID = excursion.TimeID,
-                Language = excursion.Language.Where(x => x.ID != 0)
-                .Select(x =>
-                new Language
-                {
-                    ID = x.ID,
-                    Name_Language = x.Name_Language,
-                    ExcursionID = x.ExcursionID
-                }).ToArray(),
-                Photo = excursion.Photo.Where(x => x.Delete != true).Select(x =>
-               new Photo
-               {
-                   ID = x.ID,
-                   ExcursionID = x.ExcursionID,
-                   FileName = x.FileName,
-                   ContentType = x.ContentType,
-                   ToMine = x.ToMine,
-                   Image = x.Image,
-                   Delete = x.Delete
-               }).ToArray(),
-                Cost = excursion.Cost
-
-            };
+            Excursion exc = GetExcursionWithoutEndlessCycle(excursion);
 
             //Что бы не было цикличной сериализации
             JsonSerializerSettings settings =
@@ -185,20 +137,43 @@ namespace TravelBug.Controllers.Pages
             return Json(tmp, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
-        public JsonResult OnDelete(int id)
-        {
+        #region Remove elements
 
-            return Json(null, JsonRequestBehavior.AllowGet);
+        [HttpPost]
+        public JsonResult OnRemoveTour(int id)
+        {
+            var result = manager.DeleteExcursionByID(id);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public JsonResult OnRemoveImages(int id, RemoveFiles[] removeFiles)
+        {
+            if (removeFiles != null)
+            {
+                for (int i = 0; i < removeFiles.Length; i++)
+                {
+                    if (id == removeFiles[i].ExcursionID)
+                    {
+                        if (removeFiles[i].Delete)
+                            manager.RemovePhotoByID(removeFiles[i].ID);
+                        else
+                            manager.UpdatePhotoByID(removeFiles[i].ID, removeFiles[i].Hide);
+                    }
+                }
+            }
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
 
         #region Get collection
 
         [HttpGet]
         public JsonResult GetDataForTable()
         {
-            var data = manager.GetExcursionByID();
+            var data = manager.GetExcursions();
 
             var result = (from m in data
                           where m.Id != 0

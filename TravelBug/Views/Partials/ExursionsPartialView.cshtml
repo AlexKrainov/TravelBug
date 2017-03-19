@@ -1,32 +1,128 @@
-﻿@model List<TravelBug.Models.TravelBugModel.Excursion>
-<link rel="stylesheet" href="~/Content/Style/Excursion.css" />
-
-<div class="container">
+﻿@*<div class="container">
     <header class="major">
-        <div class="row 150%">
-            @for (int i = 1; i < Model.Count(); i++)
-            {
-                var cl = i % 3 != 0 ? "4u" : "4u$";
-                <div class="@cl">
-                    <span class="image fit">
-                        <a href="/Excursion/View?excursionID=@Model[i].Id">
-                            @if (Model[i].Photo != null && Model[i].Photo.Count > 0)
-                {
-                                <img src="@Url.Action("GetUrlFromPictureOfExcursion", "ShowImage", new { excursionID = Model[i].Id })" alt="" />
-                            }
-                            else
-                            {
-                                <img src="~/Content/images/Tour/camera-photo-min.png" alt="" />
-                            }
+        <div class="row 150%"*@>
+@*ng-cloak*@
+<div ng-controller="excursionsCtrl as exsCtrl">
+    
+    @*<md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex-xs flex-gt-xs="100" layout="row">
+            <md-card>
+                <img ng-src="https://unsplash.it/g/400/214" class="md-card-image" alt="Washed Out">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Icon action buttons</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <p>
+                        The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                        two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                    </p>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-icon-button" aria-label="Favorite">
+                        <md-icon md-svg-icon="~/Content/images/UI/favorite.svg"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Settings">
+                        <md-icon md-svg-icon="~/Content/images/UI/filter_list.svg"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Share">
+                        <md-icon md-svg-icon="~/Content/images/UI/open_new.svg"></md-icon>
+                    </md-button>
+                </md-card-actions>
 
-                        </a>
-                    </span>
-                </div>
-                @*<h4>@Model[i].Title</h4>*@
-            }
+            </md-card>
+            @*</div>
+                <div flex-xs flex-gt-xs="50" layout="column">*@
+            <md-card>
+                <img ng-src="https://unsplash.it/g/400/214" class="md-card-image" alt="Washed Out">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Icon action buttons</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <p>
+                        The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                        two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                    </p>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-icon-button" aria-label="Favorite">
+                        <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Settings">
+                        <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Share">
+                        <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
+                    </md-button>
+                </md-card-actions>
+            </md-card>
 
         </div>
-    </header>
+    </md-content>
+    <md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex-xs flex-gt-xs="100" layout="row">
+            <md-card>
+                <img ng-src="https://unsplash.it/g/400/214" class="md-card-image" alt="Washed Out">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Icon action buttons</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <p>
+                        The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                        two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                    </p>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-icon-button" aria-label="Favorite">
+                        <md-icon md-svg-icon="~/Content/images/UI/favorite.svg"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Settings">
+                        <md-icon md-svg-icon="~/Content/images/UI/filter_list.svg"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Share">
+                        <md-icon md-svg-icon="~/Content/images/UI/open_new.svg"></md-icon>
+                    </md-button>
+                </md-card-actions>
+
+            </md-card>
+            @*</div>
+                <div flex-xs flex-gt-xs="50" layout="column">*@
+            <md-card>
+                <img ng-src="https://unsplash.it/g/400/214" class="md-card-image" alt="Washed Out">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Icon action buttons</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <p>
+                        The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                        two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                    </p>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-icon-button" aria-label="Favorite">
+                        <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Settings">
+                        <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Share">
+                        <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
+                    </md-button>
+                </md-card-actions>
+            </md-card>
+
+        </div>
+    </md-content>
 </div>
 
-@*@Html.Partial("~/Views/Partials/ExcursionPartialView.cshtml", Model[i])*@
+@*</div>
+        </header>
+    </div>*@
+
