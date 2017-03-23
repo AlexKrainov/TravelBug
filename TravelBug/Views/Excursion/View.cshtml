@@ -34,14 +34,27 @@
 
     /*#region text description */
 
-    section.special {
+    section.special.image_background {
         text-align: inherit;
     }
 
     /*#endregion */
-    /*Костыль, почему в футоре появляется див пустой*/ 
+
+    /*#region Обратная связь */
+
+    div.row.uniform  input {
+        border: 1px solid black;
+    }
+      div.row.uniform  textarea{
+        border: 1px solid black;
+    }
+
+
+    /*#endregion */
+
+    /*Костыль, почему в футоре появляется див пустой*/
     #skel-layers-hiddenWrapper {
-            height: 0% !important;
+        height: 0% !important;
     }
 </style>
 
@@ -52,8 +65,6 @@
 
 <section id="main" class="wrapper style1 special image_background">
     @*<div ng-include src="'../../TravelBug.UI/Partials_UI/TourPartialView.html'"></div>*@
-
-
 
     <div class="container" ng-controller="excursionCtrl as exCtrl">
 
@@ -107,16 +118,22 @@
 
                 </div>
             </p>
+
+            @*class style3 делает синий бэкграунд*@
+            <section id="three" class="wrapper  special">
+                @Html.Partial("~/Views/Partials/ContactFormPartial.cshtml")
+            </section>
         </section>
-</section>
+
     </div>
+
 </section>
 
 
 
-<section id="three" class="wrapper style3 special">
-    @Html.Partial("~/Views/Partials/ContactFormPartial.cshtml")
-</section>
+@*<section id="three" class="wrapper style3 special">
+        @Html.Partial("~/Views/Partials/ContactFormPartial.cshtml")
+    </section>*@
 
 <script src="~/TravelBug.UI/Services/TourService.js"></script>
 <script src="~/TravelBug.UI/Controllers/ExcursionController.js"></script>
