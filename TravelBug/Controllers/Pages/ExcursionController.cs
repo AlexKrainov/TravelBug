@@ -24,7 +24,7 @@ namespace TravelBug.Controllers.Pages
 
             Time time = excursion.TimeID != null ? manager.GetTimeByID(excursion.TimeID ?? 0) : null;
 
-            var exc = new 
+            var exc = new
             {
                 Id = excursion.Id,
                 Title = excursion.Title,
@@ -54,8 +54,11 @@ namespace TravelBug.Controllers.Pages
 
             if (exc != null && exc.Photo != null) // && exc.Photo.Count != 0)
             {
-                var tmpPhoto = exc.Photo.ElementAt(0);
-                tmpPhoto.Delete = true;
+                var tmpPhoto = exc.Photo.FirstOrDefault();
+                if (tmpPhoto != null)
+                {
+                    tmpPhoto.Delete = true;
+                }
             }
 
 

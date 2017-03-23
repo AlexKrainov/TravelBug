@@ -62,7 +62,9 @@
         activate();
 
         function activate() {
-            return getTour();
+
+            getTour();
+
         }
     }
 })();
