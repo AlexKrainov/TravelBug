@@ -75,7 +75,7 @@
             </div>
         </md-content>
 
-        <section class="box" ng-cloak ng-if="isReady">
+        <section class="box style1" ng-cloak ng-if="isReady">
             <header class="major">
                 <h3>{{ tour.Title }} </h3>
             </header>
@@ -119,12 +119,63 @@
                 </div>
             </p>
 
+            <section>
+                <div class="table-wrapper 4u 12u$(medium)">
+                    <table class="alt">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tour duration:</td>
+                                <td>Bright and energetic local, young, enthusiastic, and fun! Your guide is your local friend.</td>
+                            </tr>
+                            <tr>
+                                <td>Sights to see:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Activity Level:</td>
+                                <td>high</td>
+                            </tr>
+                            <tr>
+                                <td>Maximum travelers:</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>Pick up &amp; Drop off:</td>
+                                <td>Lobby of your hotel or any place you wish</td>
+                            </tr>
+                            <tr>
+                                <td>Start time:</td>
+                                <td>9am - 12pm</td>
+                            </tr>
+                            <tr>
+                                <td>Extra hours:</td>
+                                <td>If you are having a good time and want your St Petersburg tour last a little bit longer, you are welcome to do that. Please note: You will be charged 20 USD per an extra hour.</td>
+                            </tr>
+                            <tr>
+                                <td>Terms of cancellation</td>
+                                <td>Cancel up to 1 day in advance for a full refund</td>
+                            </tr>
+                            <tr>
+                                <td>Tipping suggestions:</td>
+                                <td>If you feel like you had a good experience, your guide would appreciate a tip. It&#39;s not mandatory. It&#39;s your decision whether you want to give your guide a tip.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
             @*class style3 делает синий бэкграунд*@
             <section id="three" class="wrapper  special">
                 @Html.Partial("~/Views/Partials/ContactFormPartial.cshtml")
             </section>
         </section>
-
+     
     </div>
 
 </section>
